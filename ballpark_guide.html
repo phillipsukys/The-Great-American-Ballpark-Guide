@@ -1,0 +1,1913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Great American Ballpark Guide — All 30 MLB Stadiums</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* MLB brand palette */
+    --ink:#002D72;
+    --paper:#ffffff;
+    --panel:#ffffff;
+    --line:#E8E9EA;
+    --line-strong:#c7cacc;
+    --muted:#54585A;
+    --faint:#8a8d90;
+    --accent:#D50032;
+    --accent-ink:#a10027;
+    --gold:#ffffff;
+    --gold-bg:#E8E9EA;
+    --blue:#002D72;
+    --blue-ink:#001d4d;
+    --blue-bg:#e7eef8;
+    --water:#ccd8ea;
+    --land:#E8E9EA;
+    --font-headline:'Oswald','Anton',sans-serif;
+    --font-body:'Inter','Helvetica Neue',Arial,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:var(--font-body);
+    background-color:var(--paper);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  button{font-family:inherit;cursor:pointer;background:none;border:none;color:inherit;}
+
+  /* ---------- Buttons ---------- */
+  .btn{font-family:var(--font-headline);display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:600;letter-spacing:0.02em;text-transform:uppercase;padding:11px 22px;border-radius:999px;border:none;background:var(--ink);color:#fff;transition:transform .12s ease, box-shadow .12s ease;box-shadow:0 3px 0 rgba(0,0,0,0.15);}
+  .btn:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 6px 14px rgba(0,0,0,0.25);}
+  .btn:active{transform:translateY(0) scale(0.99);}
+  .btn-outline{background:#fff;color:var(--ink);border:2px solid var(--line-strong);box-shadow:none;}
+  .btn-outline:hover{border-color:var(--blue);}
+  .btn-accent{background:var(--accent);color:#fff;}
+  .btn-gold{background:var(--gold);color:var(--ink);}
+  .btn-blue{background:var(--blue);color:#fff;}
+  .nav-white{background:#fff;color:var(--blue-ink);box-shadow:none;}
+  .nav-white:hover{background:#fff;}
+  .btn-sm{padding:8px 14px;font-size:12.5px;}
+
+  header.topnav{position:sticky;top:0;z-index:100;background:var(--ink);border-bottom:4px solid var(--accent);}
+  .nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 24px;gap:14px;}
+  .brand{color:#fff;display:flex;align-items:center;gap:9px;flex:none;}
+  .brand-icon{width:26px;height:26px;flex:none;border-radius:50%;background:linear-gradient(135deg, #ffffff 50%, #D50032 50%);box-shadow:0 0 0 2px rgba(255,255,255,0.25);}
+  .brand-text{font-family:var(--font-headline);display:flex;flex-direction:column;line-height:1.12;text-transform:uppercase;white-space:nowrap;}
+  .brand-text .bt-line1{font-size:9.5px;font-weight:500;letter-spacing:0.06em;opacity:0.75;}
+  .brand-text .bt-line2{font-size:14.5px;font-weight:700;letter-spacing:0.01em;}
+  .navlinks{display:flex;gap:3px;align-items:center;flex-wrap:wrap;}
+  .navlinks button{white-space:nowrap;}
+  .navlinks button:not(.btn){font-family:var(--font-headline);font-size:12.5px;font-weight:600;text-transform:uppercase;color:rgba(255,255,255,0.82);padding:8px 13px;border-radius:999px;border:none;background:transparent;letter-spacing:0.01em;transition:all .12s ease;}
+  .navlinks button:not(.btn):hover{color:#fff;background:rgba(255,255,255,0.08);}
+  .navlinks button:not(.btn).active{color:#fff;background:var(--accent);}
+  .navlinks button.btn.active{outline:2px solid #fff;outline-offset:2px;}
+  .navsearch{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.14);border-radius:999px;padding:8px 14px;margin-left:4px;}
+  .navsearch .search-ic{font-size:12px;opacity:0.75;}
+  .navsearch input{background:transparent;border:none;outline:none;color:#fff;font-size:12.5px;padding:0;width:110px;}
+  .navsearch input::placeholder{color:rgba(255,255,255,0.65);}
+
+  main{max-width:1080px;margin:0 auto;padding:0 24px 70px;}
+
+  /* ---------- Map ---------- */
+  .map-section{padding:32px 0 12px;}
+  .map-eyebrow{font-family:var(--font-headline);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:8px;}
+  .map-title{font-family:var(--font-headline);font-size:22px;font-weight:600;margin:0 0 4px;text-transform:uppercase;letter-spacing:0.01em;}
+  .map-sub{font-size:13px;color:var(--muted);margin:0 0 18px;}
+  .map-wrap{position:relative;width:100%;background:var(--water);border-radius:20px;overflow:hidden;border:2px solid var(--blue);box-shadow:0 8px 22px rgba(21,62,117,0.18);}
+  .map-wrap svg{width:100%;height:auto;display:block;}
+  .map-wrap .state{fill:var(--land);stroke:#54585A;stroke-width:1.4;}
+  .map-dot{fill:var(--accent);stroke:var(--paper);stroke-width:2;cursor:pointer;transition:r .12s ease, fill .12s ease;}
+  .map-dot:hover,.map-dot.active{fill:var(--ink);}
+  .map-card{position:absolute;z-index:30;width:200px;background:var(--ink);color:var(--paper);border-radius:8px;padding:10px;pointer-events:none;opacity:0;transition:opacity .1s ease;box-shadow:0 6px 18px rgba(0,0,0,.3);}
+  .map-card.visible{opacity:1;}
+  .map-card .mc-img{width:100%;height:80px;object-fit:cover;border-radius:5px;margin-bottom:8px;background:#333;}
+  .map-card .mc-team{font-family:var(--font-headline);font-size:13px;font-weight:600;}
+  .map-card .mc-park{font-size:11px;color:#c9cdd2;margin-top:1px;}
+  .map-card .mc-city{font-size:10.5px;color:#9099a3;margin-top:3px;}
+  .map-hint{font-size:11px;color:var(--faint);margin-top:10px;text-align:center;}
+  .map-fallback-note{font-size:11.5px;color:var(--muted);text-align:center;padding:40px 16px;display:none;}
+
+  /* ---------- Hero ---------- */
+  .hero{padding:44px 0 34px;text-align:center;}
+  .hero.hero-sub{text-align:left;padding-top:32px;}
+  .hero .eyebrow{font-family:var(--font-headline);display:inline-flex;background:var(--accent);color:#fff;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;margin:0 auto 20px;font-weight:600;padding:8px 18px;border-radius:999px;}
+  .hero.hero-sub .eyebrow{margin:0 0 12px;}
+  .hero h1{font-family:var(--font-headline);font-size:44px;margin:0 auto 14px;color:var(--ink);font-weight:700;letter-spacing:-0.01em;max-width:680px;text-transform:uppercase;line-height:1.1;}
+  .hero.hero-sub h1{margin:0 0 8px;}
+  .hero h1 .pop{color:inherit;}
+  .hero p{font-size:15.5px;color:var(--muted);max-width:560px;margin:0 auto 28px;}
+  .hero.hero-sub p{margin:0;max-width:680px;}
+  .stat-row{display:flex;gap:52px;flex-wrap:wrap;justify-content:center;padding-top:4px;}
+  .stat{text-align:center;}
+  .stat .num{font-family:var(--font-headline);font-size:32px;font-weight:700;color:var(--ink);}
+  .stat .label{font-size:11px;color:var(--faint);text-transform:uppercase;letter-spacing:0.06em;margin-top:4px;}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:30px;}
+
+  .filter-bar{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:0 0 20px;padding-bottom:4px;}
+  .filter-chip{font-family:var(--font-headline);font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.01em;padding:8px 18px;border-radius:999px;border:2px solid var(--line-strong);background:#fff;color:var(--ink);transition:all .12s ease;}
+  .filter-chip:hover{transform:translateY(-1px);box-shadow:0 3px 8px rgba(0,0,0,0.12);}
+  .filter-chip.active{color:#fff;background:var(--ink);border-color:var(--ink);}
+  .filter-chip-divider{width:1.5px;align-self:stretch;background:var(--line-strong);margin:2px 4px;}
+  .filter-chip-visit{border-style:dashed;}
+  .filter-chip-visit.active{border-style:solid;}
+  .filter-chip-visit:first-of-type.active{background:var(--accent);border-color:var(--accent);}
+  .filter-chip-visit:last-of-type.active{background:var(--ink);border-color:var(--ink);}
+
+  .section-title{font-family:var(--font-headline);font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin:0 0 6px;text-align:center;}
+  .results-count{color:var(--faint);font-size:12.5px;margin-bottom:22px;text-align:center;}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:28px 24px;}
+  .card{cursor:pointer;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 2px 8px rgba(15,35,65,0.08);transition:transform .15s ease, box-shadow .15s ease;}
+  .card:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgba(15,35,65,0.18);}
+  .card .thumb-wrap{position:relative;width:100%;padding-top:64%;background:#E8E9EA;overflow:hidden;}
+  .card .thumb-wrap img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;transition:transform .25s ease;}
+  .card:hover .thumb-wrap img{transform:scale(1.05);}
+  .card .thumb-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#E8E9EA;color:var(--muted);font-size:12px;text-align:center;padding:12px;}
+  .card-body{padding:14px 16px 18px;}
+  .card .park-name{font-family:var(--font-headline);font-size:16px;font-weight:600;color:var(--ink);margin:0 0 2px;}
+  .card .team-name{font-size:12.5px;font-weight:600;color:var(--accent);margin:0 0 4px;}
+  .card .meta{font-size:11.5px;color:var(--faint);}
+
+  .no-results{text-align:center;padding:60px 20px;color:var(--muted);}
+
+  /* ---------- Visit-status badge ---------- */
+  .visit-badge{position:absolute;top:10px;right:10px;z-index:5;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;line-height:1;color:#fff;background:rgba(255,255,255,0.4);border:2px solid rgba(255,255,255,0.75);box-shadow:0 2px 6px rgba(0,0,0,0.18);cursor:pointer;transition:transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;}
+  .visit-badge:hover{transform:scale(1.14);box-shadow:0 4px 12px rgba(0,0,0,0.28);}
+  .visit-badge.is-unmarked{background:rgba(255,255,255,0.35);}
+  .card:hover .visit-badge.is-unmarked,.visit-badge.is-unmarked:hover{background:rgba(255,255,255,0.9);border-color:var(--line-strong);color:var(--faint);}
+  .visit-badge.is-unmarked:hover::after{content:"+";}
+  .visit-badge.is-been{background:var(--accent);border-color:#fff;box-shadow:0 2px 10px rgba(213,0,50,0.55),0 0 0 3px rgba(213,0,50,0.16);}
+  .visit-badge.is-want{background:var(--ink);border-color:#fff;box-shadow:0 2px 10px rgba(0,45,114,0.55),0 0 0 3px rgba(0,45,114,0.16);}
+  .visit-badge.pop{animation:badgePop .45s cubic-bezier(.34,1.56,.64,1);}
+  @keyframes badgePop{0%{transform:scale(0.55) rotate(-8deg);}60%{transform:scale(1.32) rotate(4deg);}100%{transform:scale(1) rotate(0);}}
+  .detail-hero .visit-badge{top:16px;right:16px;width:38px;height:38px;font-size:18px;}
+
+  /* ---------- Detail View ---------- */
+  .detail{display:none;}
+  .back-btn{font-family:var(--font-headline);display:inline-flex;align-items:center;gap:6px;color:var(--ink);font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.01em;margin:26px 0 22px;padding:9px 18px;border-radius:999px;border:2px solid var(--line-strong);background:#fff;transition:all .12s ease;}
+  .back-btn:hover{border-color:var(--blue);transform:translateY(-1px);}
+
+  .detail-hero{position:relative;background:#E8E9EA;height:280px;overflow:hidden;margin-bottom:18px;}
+  .detail-hero img{width:100%;height:100%;object-fit:cover;}
+  .detail-hero .fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#E8E9EA;color:var(--muted);font-size:16px;text-align:center;}
+
+  .detail-head{padding-bottom:18px;border-bottom:1px solid var(--line-strong);margin-bottom:0;}
+  .detail-head .eyebrow{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:6px;}
+  .detail-head h2{font-family:var(--font-headline);font-size:30px;margin:0 0 4px;font-weight:600;letter-spacing:-0.01em;text-transform:uppercase;}
+  .detail-head .team{font-size:14px;color:var(--muted);}
+  .detail-head .tagline{font-size:14.5px;color:#a10027;font-weight:600;margin-top:8px;font-style:italic;}
+
+  .factbar{display:flex;flex-wrap:wrap;gap:0;margin:20px 0 34px;border-bottom:1px solid var(--line);}
+  .fact-pill{padding:14px 22px 14px 0;margin-right:22px;border-right:1px solid var(--line);}
+  .fact-pill:last-child{border-right:none;}
+  .fact-pill .fp-label{font-size:10.5px;text-transform:uppercase;letter-spacing:0.06em;color:var(--faint);}
+  .fact-pill .fp-value{font-family:var(--font-headline);font-size:16px;color:var(--ink);font-weight:700;margin-top:3px;}
+  .fact-pill:nth-child(1) .fp-value{color:var(--blue);}
+  .fact-pill:nth-child(2) .fp-value{color:var(--accent);}
+  .fact-pill:nth-child(3) .fp-value{color:#a10027;}
+
+  /* magazine grid */
+  .mag-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 40px;}
+  .mag-block{padding:20px 0;border-bottom:1px solid var(--line);}
+  .mag-block h3{font-family:var(--font-headline);margin:0 0 8px;font-size:14px;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;}
+  .mag-block h3 .ic{margin-right:6px;}
+  .mag-block p{margin:0;font-size:14.5px;color:#54585A;}
+  .mag-full{grid-column:1/-1;}
+
+  .pullquote{
+    grid-column:1/-1;background:var(--blue);color:#fff;border-radius:18px;
+    padding:28px 32px;margin:6px 0 26px;position:relative;
+  }
+  .pullquote .pq-label{font-family:var(--font-headline);font-size:11.5px;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);font-weight:600;margin-bottom:10px;}
+  .pullquote p{margin:0;font-size:18px;line-height:1.5;font-weight:500;max-width:640px;}
+
+  .vault-grid{grid-column:1/-1;display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px;padding:20px 0;border-bottom:1px solid var(--line);}
+  .vault-card{border:2px solid var(--line);border-radius:14px;padding:14px;background:var(--panel);transition:border-color .12s ease;}
+  .vault-card:hover{border-color:var(--accent);}
+  .vault-card .v-name{font-family:var(--font-headline);font-weight:600;font-size:15px;color:var(--ink);}
+  .vault-card .v-role{font-size:11px;color:#a10027;text-transform:uppercase;letter-spacing:0.04em;margin:3px 0 8px;font-weight:700;}
+  .vault-card .v-note{font-size:12.5px;color:var(--muted);}
+
+  .twin-row{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:20px 0;border-bottom:1px solid var(--line);}
+  .callout{border-radius:18px;padding:18px 20px;}
+  .callout h3{font-family:var(--font-headline);margin:0 0 8px;font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;}
+  .callout p{margin:0;font-size:14px;color:#54585A;}
+  .callout-gold{background:var(--gold-bg);}
+  .callout-gold h3{color:var(--accent-ink);}
+  .callout-blue{background:var(--blue-bg);}
+  .callout-blue h3{color:var(--blue-ink);}
+
+  .schedule-note{font-size:12px;color:var(--faint);margin:0 0 14px;}
+  .schedule-list{list-style:none;margin:0;padding:0;}
+  .schedule-list li{display:flex;justify-content:space-between;gap:16px;padding:8px 0;border-bottom:1px solid var(--line);font-size:14px;}
+  .schedule-list li:last-child{border-bottom:none;}
+  .schedule-range{color:var(--muted);font-size:13px;}
+  .schedule-opp{font-weight:600;color:var(--ink);}
+  .schedule-opp::before{content:"vs ";font-weight:400;color:var(--faint);}
+
+  footer{text-align:center;padding:34px 20px 60px;color:var(--faint);font-size:12px;border-top:1px solid var(--line);margin-top:10px;}
+  footer a{color:var(--ink);}
+
+  /* ---------- Easter egg ---------- */
+  .homer-msg{
+    position:fixed;top:38%;left:50%;transform:translate(-50%,-50%) scale(0);
+    font-size:26px;font-weight:800;color:var(--gold);background:var(--ink);
+    padding:18px 28px;border-radius:12px;z-index:10000;text-align:center;
+    animation:popmsg 2.6s ease forwards;box-shadow:0 12px 30px rgba(0,0,0,.4);
+  }
+  .homer-msg small{display:block;font-size:12px;font-weight:500;color:#c9cdd2;margin-top:6px;letter-spacing:0.02em;}
+  @keyframes popmsg{
+    0%{transform:translate(-50%,-50%) scale(0);opacity:0;}
+    12%{transform:translate(-50%,-50%) scale(1.08);opacity:1;}
+    22%{transform:translate(-50%,-50%) scale(1);opacity:1;}
+    88%{opacity:1;}
+    100%{opacity:0;transform:translate(-50%,-50%) scale(0.94);}
+  }
+  .confetto{position:fixed;top:-30px;font-size:20px;z-index:9999;animation:fall linear forwards;}
+  @keyframes fall{to{transform:translateY(110vh) rotate(340deg);}}
+
+  /* ---------- Trivia ---------- */
+  .trivia-best{font-size:12.5px;color:var(--faint);margin-top:16px;}
+  .trivia-progress{font-size:11px;color:var(--faint);text-transform:uppercase;letter-spacing:0.06em;font-weight:600;margin:26px 0 10px;}
+  .trivia-question{font-family:var(--font-headline);font-size:21px;font-weight:600;margin:0 0 20px;max-width:640px;}
+  .trivia-options{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:22px;}
+  .trivia-option{text-align:left;padding:14px 16px;border:2px solid var(--line-strong);border-radius:14px;background:var(--panel);font-size:14px;color:var(--ink);font-weight:600;transition:all .12s ease;}
+  .trivia-option:hover:not(:disabled){border-color:var(--accent);}
+  .trivia-option.correct{background:#e2f2dd;border-color:#3f8f37;color:#1e4a19;}
+  .trivia-option.incorrect{background:#f7dfdf;border-color:var(--accent);color:var(--accent-ink);}
+  .trivia-option:disabled{cursor:default;}
+  #triviaResults h2{font-family:var(--font-headline);font-size:26px;font-weight:600;margin:20px 0 8px;text-transform:uppercase;}
+  #triviaResults p{color:var(--muted);margin:0 0 20px;}
+
+  /* ---------- Compare ---------- */
+  .compare-picker{display:flex;align-items:center;gap:16px;margin:8px 0 28px;flex-wrap:wrap;}
+  .compare-select{font-size:14px;padding:10px 16px;border-radius:999px;border:2px solid var(--line-strong);background:var(--panel);color:var(--ink);font-family:inherit;font-weight:600;flex:1 1 320px;min-width:220px;max-width:440px;}
+  .compare-vs{font-size:12px;color:var(--faint);text-transform:uppercase;letter-spacing:0.08em;font-weight:700;}
+  .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+  .compare-card{border:2px solid var(--line);border-radius:18px;overflow:hidden;background:var(--panel);}
+  .compare-card .cc-img{width:100%;height:160px;object-fit:cover;background:#E8E9EA;}
+  .compare-card .cc-body{padding:18px 20px;}
+  .compare-card .cc-team{font-family:var(--font-headline);font-size:12px;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;font-weight:600;}
+  .compare-card .cc-name{font-family:var(--font-headline);font-size:21px;font-weight:600;margin:4px 0 6px;}
+  .compare-card .cc-tagline{font-size:13px;color:#a10027;font-style:italic;margin-bottom:14px;}
+  .compare-card .cc-stats{display:flex;gap:18px;margin-bottom:16px;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid var(--line);}
+  .compare-card .cc-stat{font-size:11px;color:var(--faint);}
+  .compare-card .cc-stat b{display:block;font-size:13.5px;color:var(--ink);font-weight:700;}
+  .compare-card .cc-row{margin-bottom:14px;}
+  .compare-card .cc-row h4{font-size:10.5px;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent);margin:0 0 4px;}
+  .compare-card .cc-row p{font-size:13px;color:#54585A;margin:0;}
+
+  /* ---------- Road Trip Planner ---------- */
+  .trip-form{margin:24px 0 30px;padding:18px 20px;background:#fff;border-radius:14px;box-shadow:0 2px 8px rgba(15,35,65,0.08);}
+  .trip-fields{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;}
+  .trip-field{display:flex;flex-direction:column;gap:5px;flex:1 1 150px;min-width:140px;}
+  .trip-field label{font-family:var(--font-headline);font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--muted);}
+  .trip-optional{text-transform:none;font-weight:400;color:var(--faint);font-family:var(--font-body);letter-spacing:0;}
+  .trip-select{width:100%;font-family:var(--font-body);font-size:13.5px;font-weight:500;padding:9px 30px 9px 12px;border-radius:9px;border:1.5px solid var(--line-strong);background-color:var(--panel);color:var(--ink);appearance:none;-webkit-appearance:none;-moz-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2354585A' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;transition:border-color .12s ease;cursor:pointer;}
+  .trip-select:hover{border-color:var(--accent);}
+  .trip-select:focus{outline:none;border-color:var(--ink);}
+
+  .trip-summary{background:var(--ink);color:#fff;border-radius:16px;padding:20px 24px;margin-bottom:22px;}
+  .trip-summary h3{font-family:var(--font-headline);margin:0 0 6px;font-size:19px;font-weight:600;}
+  .trip-summary p{margin:0;color:#cfd6e0;font-size:13.5px;}
+
+  .trip-timeline{display:flex;flex-direction:column;gap:0;}
+  .trip-stop{display:flex;gap:16px;background:#fff;border-radius:16px;padding:16px 18px;box-shadow:0 2px 8px rgba(15,35,65,0.08);align-items:center;}
+  .trip-stop .ts-img{width:64px;height:64px;border-radius:12px;object-fit:cover;background:#E8E9EA;flex:none;}
+  .trip-stop .ts-day{font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent);}
+  .trip-stop .ts-name{font-family:var(--font-headline);font-size:16.5px;font-weight:600;color:var(--ink);margin:2px 0;}
+  .trip-stop .ts-meta{font-size:12.5px;color:var(--muted);}
+  .trip-leg{display:flex;align-items:center;gap:8px;padding:10px 18px 10px 40px;color:var(--muted);font-size:12.5px;flex-wrap:wrap;}
+  .trip-leg a{color:var(--accent);font-weight:600;text-decoration:underline;}
+  .trip-leg .tl-icon{font-size:16px;}
+  .trip-empty{background:#fff;border-radius:16px;padding:30px 24px;text-align:center;color:var(--muted);box-shadow:0 2px 8px rgba(15,35,65,0.08);}
+
+  /* ---------- Ballpark Rankings ---------- */
+  .rank-methodology{background:var(--blue-bg);border-radius:16px;padding:16px 20px;margin:0 0 26px;font-size:13px;color:var(--blue-ink);}
+  .rank-methodology b{color:var(--ink);}
+  .rank-tier{margin-bottom:34px;}
+  .rank-tier-head{display:flex;align-items:baseline;gap:12px;margin-bottom:14px;flex-wrap:wrap;}
+  .rank-tier-name{font-family:var(--font-headline);font-size:21px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:0.01em;}
+  .rank-tier-range{font-family:var(--font-headline);font-size:12px;font-weight:600;color:#fff;background:var(--accent);padding:4px 12px;border-radius:999px;text-transform:uppercase;letter-spacing:0.05em;}
+  .rank-tier-desc{font-size:13px;color:var(--muted);margin:2px 0 0;flex-basis:100%;}
+  .rank-list{display:flex;flex-direction:column;gap:10px;}
+  .rank-row{display:flex;align-items:center;gap:14px;background:#fff;border-radius:16px;padding:14px 18px;box-shadow:0 2px 8px rgba(15,35,65,0.08);cursor:pointer;transition:transform .15s ease, box-shadow .15s ease;}
+  .rank-row:hover{transform:translateY(-3px) scale(1.005);box-shadow:0 12px 24px rgba(15,35,65,0.18);}
+  .rank-num{font-family:var(--font-headline);flex:none;width:38px;height:38px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;}
+  .rank-emoji{flex:none;width:44px;height:44px;border-radius:50%;background:var(--gold-bg);display:flex;align-items:center;justify-content:center;font-size:21px;transition:transform .2s ease;box-shadow:inset 0 0 0 2px rgba(255,255,255,0.6);}
+  .rank-row:hover .rank-emoji{transform:scale(1.18) rotate(-8deg);}
+  .rank-info{flex:1;min-width:0;}
+  .rank-info .ri-name{font-size:15px;font-weight:700;color:var(--ink);}
+  .rank-info .ri-team{font-size:11.5px;font-weight:600;color:var(--accent);margin:1px 0 5px;}
+  .rank-info .ri-blurb{font-size:13px;color:#54585A;margin:0;}
+  .rank-callout{background:var(--gold-bg);border-radius:16px;padding:16px 20px;margin-bottom:14px;font-size:13px;color:var(--accent-ink);}
+  .rank-callout b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px;}
+
+  @media(max-width:640px){
+    .trivia-options{grid-template-columns:1fr;}
+    .compare-grid{grid-template-columns:1fr;}
+    .trip-fields{flex-direction:column;align-items:stretch;}
+    .rank-row{flex-wrap:wrap;}
+    .rank-info{flex-basis:calc(100% - 96px);}
+    .hero h1{font-size:26px;}
+    .navlinks{gap:16px;}
+    .navsearch input{width:100px;}
+    .detail-hero{height:200px;}
+    .detail-head h2{font-size:22px;}
+    .mag-grid{grid-template-columns:1fr;}
+    .mag-full{grid-column:auto;}
+    .vault-grid{grid-column:auto;grid-template-columns:1fr 1fr;}
+    .twin-row{grid-column:auto;grid-template-columns:1fr;}
+    .schedule-list li{flex-direction:column;gap:2px;}
+    .map-card{width:160px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="topnav">
+  <div class="nav-inner">
+    <div class="brand" id="brandLogo"><span class="brand-icon"></span><span class="brand-text"><span class="bt-line1">The Great American</span><span class="bt-line2">Ballpark Guide</span></span></div>
+    <div class="navlinks" id="navlinks">
+      <button data-view="home" class="active">Home</button>
+      <button data-view="parks">Parks</button>
+      <button data-view="trivia" class="btn btn-sm nav-white">&#127942; Trivia</button>
+      <button data-view="compare" class="btn btn-sm nav-white">&#9878;&#65039; Compare</button>
+      <button data-view="tripplanner" class="btn btn-sm nav-white">&#128663; Trip</button>
+      <button data-view="rankings" class="btn btn-sm nav-white">&#129351; Rankings</button>
+      <button data-view="about">About</button>
+    </div>
+    <div class="navsearch">
+      <span class="search-ic">&#128269;</span>
+      <input type="text" id="searchInput" placeholder="Search team, city, park">
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section id="view-home">
+
+    <div class="map-section">
+      <div class="map-eyebrow">Where to find them</div>
+      <h2 class="map-title">All 30, coast to coast</h2>
+      <p class="map-sub">Hover a dot to peek, click to dive in.</p>
+      <div class="map-wrap" id="mapWrap">
+        <svg id="mapSvg" viewBox="0 0 960 600" role="img" aria-label="Map of the United States showing all 30 MLB ballpark locations"></svg>
+        <div class="map-card" id="mapCard"></div>
+        <p class="map-fallback-note" id="mapFallback">The live map couldn't load (no internet connection?) — the full park list is still right below.</p>
+      </div>
+      <p class="map-hint">Toronto's just a hop north of the border — Blue Jays fans, we see you.</p>
+    </div>
+
+    <div class="hero">
+      <div class="eyebrow">30 stadiums &middot; 2026 season</div>
+      <h1>Every MLB ballpark, one guide.</h1>
+      <p>Food and drink, how good the sightlines actually are, and the quirky x-factors that make each park worth the trip. Tap a park to dig in.</p>
+      <div class="stat-row">
+        <div class="stat"><div class="num">30</div><div class="label">Ballparks</div></div>
+        <div class="stat"><div class="num">6</div><div class="label">Divisions</div></div>
+        <div class="stat"><div class="num">1</div><div class="label">Best hot dog debate</div></div>
+        <div class="stat"><div class="num" id="visitedStatNum">0</div><div class="label">Visited by you</div></div>
+      </div>
+      <div class="hero-actions">
+        <button class="btn btn-accent" id="heroBrowseBtn">Browse all 30 parks &rarr;</button>
+        <button class="btn btn-outline" id="heroTriviaBtn">&#127942; Try the trivia quiz</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="view-parks">
+    <p class="section-title" id="resultsTitle">All 30 ballparks</p>
+    <div class="filter-bar" id="filterBar"></div>
+    <p class="results-count" id="resultsCount"></p>
+    <div class="grid" id="parkGrid"></div>
+    <p class="no-results" id="noResults" style="display:none;">No ballparks match that search. Try another team or city.</p>
+  </section>
+
+  <section id="view-about" class="detail">
+    <div class="hero hero-sub">
+      <h1 style="font-size:26px;">About this guide</h1>
+      <p style="max-width:680px;">The Great American Ballpark Guide covers all 30 current Major League Baseball stadiums for the 2026 season, including the Athletics' temporary home at Sutter Health Park and the Rays' return to a rebuilt Tropicana Field. Each park page covers food and drink, what it's actually like to watch a game there, practical notes on sightlines and getting in and out, franchise history through a handful of the greats who played there, and the remaining home schedule as of July 30, 2026. There's also a trivia quiz, a side-by-side park comparison tool, a road trip planner, and a ballpark power-rankings page built from five published rankings. Photos are sourced from Wikimedia Commons under their Creative Commons licenses. (Also: try the Konami code sometime.)</p>
+    </div>
+  </section>
+
+  <section id="view-trivia" class="detail">
+    <div class="hero hero-sub">
+      <div class="eyebrow">Trivia</div>
+      <h1 style="font-size:26px;">How well do you know these ballparks?</h1>
+      <p>Ten questions, pulled straight from the "did you know" and fun-factoid facts on every park page. No pressure — well, maybe a little.</p>
+    </div>
+
+    <div id="triviaIntro">
+      <button class="btn btn-accent" id="triviaStartBtn">Start the quiz &rarr;</button>
+      <p class="trivia-best" id="triviaBest"></p>
+    </div>
+
+    <div id="triviaQuiz" style="display:none;">
+      <p class="trivia-progress" id="triviaProgress"></p>
+      <h3 class="trivia-question" id="triviaQuestionText"></h3>
+      <div class="trivia-options" id="triviaOptions"></div>
+      <button class="btn btn-outline" id="triviaNextBtn" style="display:none;">Next question &rarr;</button>
+    </div>
+
+    <div id="triviaResults" style="display:none;">
+      <h2 id="triviaScoreHeadline"></h2>
+      <p id="triviaScoreDetail"></p>
+      <button class="btn btn-accent" id="triviaRetryBtn">Play again</button>
+    </div>
+  </section>
+
+  <section id="view-compare" class="detail">
+    <div class="hero hero-sub" style="margin-bottom:10px;">
+      <div class="eyebrow">Compare</div>
+      <h1 style="font-size:26px;">Put two parks side by side.</h1>
+      <p>Trying to decide between two road games? Line them up.</p>
+    </div>
+    <div class="compare-picker">
+      <select id="compareA" class="compare-select"></select>
+      <span class="compare-vs">vs</span>
+      <select id="compareB" class="compare-select"></select>
+    </div>
+    <div class="compare-grid" id="compareGrid"></div>
+  </section>
+
+  <section id="view-tripplanner" class="detail">
+    <div class="hero hero-sub">
+      <div class="eyebrow">Road Trip</div>
+      <h1 style="font-size:26px;">Plan a multi-city ballpark trip.</h1>
+      <p>Pick a starting park, how many days you've got, and (optionally) where you want to end up — I'll line up real home games from the remaining 2026 schedule and figure out the smartest way to connect them by car or train.</p>
+    </div>
+
+    <div class="trip-form">
+      <div class="trip-fields">
+        <div class="trip-field">
+          <label>Starting park</label>
+          <select id="tripStart" class="trip-select"></select>
+        </div>
+        <div class="trip-field">
+          <label>Ending park <span class="trip-optional">(optional)</span></label>
+          <select id="tripEnd" class="trip-select"></select>
+        </div>
+        <div class="trip-field">
+          <label>Trip length</label>
+          <select id="tripDays" class="trip-select">
+            <option value="3">3 days</option>
+            <option value="4" selected>4 days</option>
+            <option value="5">5 days</option>
+            <option value="6">6 days</option>
+            <option value="7">7 days</option>
+            <option value="10">10 days</option>
+            <option value="14">14 days</option>
+          </select>
+        </div>
+        <div class="trip-field">
+          <label>Travel mode</label>
+          <select id="tripVehicle" class="trip-select">
+            <option value="smart">Smart mix — car or train, whichever's best</option>
+            <option value="car">Drive the whole way</option>
+          </select>
+        </div>
+        <div class="trip-field">
+          <label>What matters most?</label>
+          <select id="tripPriority" class="trip-select">
+            <option value="parks">Most parks — pack in as many games as possible</option>
+            <option value="balanced" selected>Balanced — a good mix of parks and pace</option>
+            <option value="relaxed">Relaxed pace — minimize time on the road</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn btn-accent" id="tripPlanBtn">Plan my trip &rarr;</button>
+    </div>
+
+    <div id="tripResults"></div>
+  </section>
+
+  <section id="view-rankings" class="detail">
+    <div class="hero hero-sub">
+      <div class="eyebrow">Ballpark Rankings</div>
+      <h1 style="font-size:26px;">The 2026 ballpark power rankings.</h1>
+      <p>We averaged five published rankings of all 30 MLB stadiums — Sports Illustrated, two Bleacher Report editions, Triple Crown Travel, and Stadium Journey — counting a source only for the parks it actually ranked, then sorted the whole league from best seat in the house to, well, keep reading.</p>
+    </div>
+    <div class="rank-methodology" id="rankMethodology"></div>
+    <div id="rankTiers"></div>
+  </section>
+
+  <section id="view-detail" class="detail">
+    <button class="back-btn" id="backBtn">&larr; Back to all parks</button>
+    <div id="detailContent"></div>
+  </section>
+
+</main>
+
+<footer>
+  The Great American Ballpark Guide · built for baseball road-trippers · photos via <a href="https://commons.wikimedia.org" target="_blank" rel="noopener">Wikimedia Commons</a> · schedules via public MLB data as of July 30, 2026
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+<script>
+const parks = [
+{id:"camden-yards",name:"Oriole Park at Camden Yards",team:"Baltimore Orioles",league:"AL East",city:"Baltimore, MD",opened:1992,capacity:"44,970",roof:"Open air",image:"OrioleParkAtCamdenYardsJune2013.jpg",lat:39.2839,lon:-76.6218,
+tagline:"Baltimore's brick-and-steel love letter to baseball, with a really big warehouse.",
+food:"Old Bay goes on everything short of the beer, and Boog's BBQ — yes, run by an actual former Oriole — will fix you a pit-beef sandwich that requires two hands and zero regrets. Grab a Natty Boh while you're at it; it's basically a civic duty.",
+watching:"This is the park that made every other team jealous enough to copy it. The open bowl means sightlines are genuinely great almost everywhere, so you can go cheap-seat without feeling like you're watching through a straw.",
+knowBeforeYouGo:"A few lower-bowl seats down the lines hide behind support columns, so double-check before you buy. Eutaw Street turns into a genuine human traffic jam right at first pitch and right after the last out — budget extra time either way.",
+xfactor:"The B&O Warehouse — the longest building on the East Coast — just sits there behind right field like it owns the place, because it kind of started this whole 'retro ballpark' trend.",
+tips:"Skip the car entirely: light rail and the MARC train both drop you right at the gates in downtown Baltimore.",
+factoid:"This ballpark basically invented the look of modern baseball — brick, steel, a city skyline — and every park built since owes it a royalty check.",
+didYouKnow:"Before settling in Baltimore in 1954, this franchise was the Milwaukee Brewers, then the St. Louis Browns. Baseball nomads, humbled by home.",
+greats:[["Cal Ripken Jr.","SS, 1981–2001","Played 2,632 consecutive games — still the sport's all-time ironman record"],["Brooks Robinson","3B, 1955–1977","16 Gold Gloves, still the gold standard at the hot corner"],["Jim Palmer","P, 1965–1984","Three Cy Youngs, and somehow never once allowed a grand slam"],["Eddie Murray","1B, 1977–1988","500 homers, 3,000 hits, one very quiet superstar"],["Frank Robinson","OF, 1966–1971","Won the Triple Crown and MVP in his very first season here"]],
+schedule:[["Jul 31 – Aug 2","Phillies"],["Aug 4–6","Angels"],["Aug 18–20","Yankees"],["Aug 21–23","Rays"],["Sep 3–6","Red Sox"],["Sep 7–9","Guardians"],["Sep 18–20","Brewers"],["Sep 21–23","Blue Jays"]]},
+
+{id:"fenway-park",name:"Fenway Park",team:"Boston Red Sox",league:"AL East",city:"Boston, MA",opened:1912,capacity:"37,755",roof:"Open air",image:"Fenway_Park01.jpg",lat:42.3467,lon:-71.0972,
+tagline:"America's oldest ballpark, and it has the creaky charm to prove it.",
+food:"A Fenway Frank is basically mandatory, chowder and lobster rolls cover the New England quota, and Sam Adams gets served with the enthusiasm of a hometown crowd that's earned it.",
+watching:"Fenway was built before anyone worried much about sightlines, so yes, some seats face a pole. That's the deal — you trade a perfect view for one of the most electric atmospheres in sports.",
+knowBeforeYouGo:"Obstructed-view seats are a real thing in the grandstand — check the map before you buy, not after. Kenmore Square turns into a genuine mosh pit after night games, so walk a few blocks before hopping the T.",
+xfactor:"The Green Monster, 37 feet of pure spite in left field, turns warning-track flies into doubles and doubles into shattered dreams. The scoreboard inside it is still updated by hand, by an actual human, mid-game.",
+tips:"There's basically no parking, so don't try. Take the T's Green Line to Kenmore and walk — and get there early, the aisles were not built for modern shoulder width.",
+factoid:"Opened in 1912, Fenway is old enough that it's outlasted every other park in the league by decades, and it shows absolutely no signs of caring.",
+didYouKnow:"The Red Sox went 86 years without a title after trading away some guy named Babe Ruth. They called it the Curse of the Bambino. Fair, honestly.",
+greats:[["Ted Williams","LF, 1939–1960","The last player to hit .400 in a season — .406, in 1941"],["Carl Yastrzemski","LF, 1961–1983","Won the Triple Crown in 1967, the last AL hitter to do it for decades"],["David Ortiz","DH, 2003–2016","Big Papi anchored three championship teams and a city's heart"],["Pedro Martinez","P, 1998–2004","A 1.74 ERA in 2000 — one of the great pitching seasons, period"],["Wade Boggs","3B, 1982–1992","Five batting titles from a hitter with an almost supernatural eye"]],
+schedule:[["Aug 4–6","White Sox"],["Aug 7–9","Athletics"],["Aug 17–19","Diamondbacks"],["Aug 21–23","Giants"],["Aug 31 – Sep 2","Mariners"],["Sep 7–9","Angels"],["Sep 11–13","Royals"],["Sep 22–24","Guardians"],["Sep 25–27","Cubs"]]},
+
+{id:"yankee-stadium",name:"Yankee Stadium",team:"New York Yankees",league:"AL East",city:"Bronx, NY",opened:2009,capacity:"46,537",roof:"Open air",image:"Yankee_Stadium_001.JPG",lat:40.8296,lon:-73.9262,
+tagline:"Twenty-seven championships and the confidence to match.",
+food:"Nathan's hot dogs, NYY Steak sandwiches, and a food hall that basically samples the entire city — this isn't a snack stand, it's a tour.",
+watching:"The short right-field porch (314 feet!) turns routine flies into souvenirs, and the wide concourses make it easy to see the field from wherever you're standing, which is a lower bar than it should be.",
+knowBeforeYouGo:"Security lines can back up hard right before first pitch, especially on getaway-day matinees. The subway platform after the game is a full-contact sport — plenty of fans just wait it out at a bar nearby.",
+xfactor:"Monument Park, behind center field, is basically a shrine to Yankees history — get there early, it closes to the public well before the game does.",
+tips:"Take the 4, B, or D train to 161st St–Yankee Stadium and skip the parking headache entirely.",
+factoid:"The current stadium sits directly across the street from where the original 1923 stadium stood — that ground is now a public park, which feels almost too on-brand.",
+didYouKnow:"The original Yankee Stadium, 'The House That Ruth Built,' stood from 1923 to 2008 before the team moved across the street. Same neighborhood, new pinstripes.",
+greats:[["Babe Ruth","OF, 1920–1934","Redefined the sport with his power and never really let anyone catch up"],["Lou Gehrig","1B, 1923–1939","Played 2,130 straight games until illness cut his career short"],["Joe DiMaggio","OF, 1936–1951","Hit safely in 56 straight games in 1941 — still untouched"],["Mickey Mantle","OF, 1951–1968","Triple Crown in 1956, one of the most feared switch-hitters ever"],["Derek Jeter","SS, 1995–2014","Five rings and the franchise's all-time hits leader"]],
+schedule:[["Aug 3–5","Cardinals"],["Aug 7–9","Braves"],["Aug 11–13","Mariners"],["Aug 21–23","Blue Jays"],["Aug 25–27","Astros"],["Aug 28–30","Red Sox"],["Sep 8–10","Rockies"],["Sep 11–13","Mets"],["Sep 22–24","Rays"],["Sep 25–27","Orioles"]]},
+
+{id:"tropicana-field",name:"Tropicana Field",team:"Tampa Bay Rays",league:"AL East",city:"St. Petersburg, FL",opened:1990,capacity:"25,000",roof:"Fixed dome",image:"Tropicana_field_from_air.JPG",lat:27.7683,lon:-82.6534,
+tagline:"The only dome in baseball, and it comes with actual rays.",
+food:"Cuban sandwiches nod to Tampa Bay's roots, the seafood holds up, and the craft beer list has quietly gotten pretty good.",
+watching:"It's a dome, so weather's a non-issue — but the catwalks hanging from the roof are genuinely in play for certain fly balls, which is either charming or infuriating depending on which team you're rooting for.",
+knowBeforeYouGo:"Learn the catwalk rules before first pitch, or you'll spend half the game confused about why that popup was suddenly a home run. Concourses feel a little dated next to the newer parks, so weekends can bottleneck.",
+xfactor:"Some catwalks keep a fly ball in play, some turn it into a home run, and nobody agrees on which without checking the rulebook. There's also a touch tank behind center field with actual live rays in it, because of course there is.",
+tips:"The Trop reopened for 2026 after Hurricane Milton literally tore the roof off in 2024 — the whole dome got rebuilt in time for Opening Day.",
+factoid:"Roughly $60 million in repairs went into patching this place back together after the storm. That's a lot of duct tape.",
+didYouKnow:"This team used to be the Tampa Bay Devil Rays until 2008 — the same year they dropped the 'Devil' and made their first World Series. Baseball people don't believe in coincidence.",
+greats:[["Evan Longoria","3B, 2008–2017","Franchise face who anchored the Rays' rise from afterthought to contender"],["Carl Crawford","OF, 2002–2010","Blinding speed, four-time AL steals leader"],["David Price","P, 2008–2014","Won the 2012 AL Cy Young Award"],["Wade Boggs","3B/DH, 1998–1999","Got his 3,000th career hit right here as a Devil Ray"],["Ben Zobrist","UT, 2006–2014","Played nearly every position, usually well"]],
+schedule:[["Jul 30","Rangers"],["Jul 31 – Aug 2","White Sox"],["Aug 14–17","Orioles"],["Aug 18–20","Blue Jays"],["Aug 28–30","Padres"],["Aug 31 – Sep 2","Mets"],["Sep 11–13","Astros"],["Sep 15–17","Athletics"],["Sep 18–20","Red Sox"]]},
+
+{id:"rogers-centre",name:"Rogers Centre",team:"Toronto Blue Jays",league:"AL East",city:"Toronto, ON",opened:1989,capacity:"41,000",roof:"Retractable",image:"Skydome_Rogers_Center_Toronto_Canada.jpg",lat:43.6414,lon:-79.3894,
+tagline:"Baseball with a side of CN Tower views.",
+food:"Poutine, peameal bacon sandwiches, and a food hall that skips the usual ballpark playbook in favor of actually good Toronto food.",
+watching:"A 2022–2023 renovation lowered the outfield seats and fixed a lot of what used to feel sterile and far away — this is a genuinely better watch than it used to be.",
+knowBeforeYouGo:"Concourses can still jam up near the hotel side of the building. And yes, bring a passport — this is the only MLB park that requires an international border crossing.",
+xfactor:"The CN Tower looms directly over the stadium, and some hotel rooms attached to the building look straight down onto the field — best hotel view in baseball, arguably.",
+tips:"It's the only MLB park outside the U.S., so plan the border crossing accordingly. Union Station is right nearby if you're taking transit.",
+factoid:"Originally SkyDome, this was the first stadium on Earth with a fully retractable roof — everyone else has been copying since.",
+didYouKnow:"Joe Carter's walk-off home run won the 1993 World Series in Game 6 — one of only two World Series-ending walk-off homers in MLB history. (The other belongs to Bill Mazeroski and the 1960 Pirates.)",
+greats:[["Roberto Alomar","2B, 1991–1995","Elite two-way second baseman on back-to-back title teams"],["Roy Halladay","P, 1999–2009","A Cy Young winner and one of the era's most dominant starters"],["Carlos Delgado","1B, 1993–2004","Franchise home run leader for years after he left"],["Joe Carter","OF, 1991–1997","Hit the swing that ended the 1993 World Series"],["Dave Stieb","P, 1979–1992","Franchise wins leader and a seven-time All-Star"]],
+schedule:[["Jul 31 – Aug 2","Cardinals"],["Aug 10–13","Red Sox"],["Aug 14–16","Yankees"],["Aug 25–27","Royals"],["Aug 28–30","Mariners"],["Sep 11–13","Orioles"],["Sep 14–16","Tigers"],["Sep 25–27","Reds"]]},
+
+{id:"rate-field",name:"Rate Field",team:"Chicago White Sox",league:"AL Central",city:"Chicago, IL",opened:1991,capacity:"40,615",roof:"Open air",image:"U.S._Cellular_Field_(30972191694).jpg",lat:41.8299,lon:-87.6338,
+tagline:"South Side pride, one exploding scoreboard at a time.",
+food:"The Comiskey Dog is the move — and don't even think about asking for ketchup — with Chicago Italian beef and Polish sausage rounding out the case for eating your way through nine innings.",
+watching:"Years of renovations knocked the infamously steep upper deck into something far more human. Lower and club level sightlines are legitimately solid these days.",
+knowBeforeYouGo:"The upper deck's angle got gentler over the years but still runs high above the field — you'll feel it in your seat, not your view. The Red Line platform after the game gets a serious crowd surge; waiting ten minutes often beats fighting the first wave.",
+xfactor:"An exploding scoreboard shoots fireworks after every home run — a Bill Veeck tradition dating to the original Comiskey Park that's somehow never gotten old.",
+tips:"The Red Line's Sox-35th stop lets you off right at the gate — no fuss required.",
+factoid:"This park has worn three sponsor names since 2003: U.S. Cellular, Guaranteed Rate, and now just Rate. Even the ballpark's identity crisis has an identity crisis.",
+didYouKnow:"The 1919 'Black Sox' scandal — eight players banned for fixing the World Series — is still one of the most infamous stories in American sports, and it happened right here on the South Side.",
+greats:[["Frank Thomas","1B, 1990–2005","Two-time AL MVP known, fittingly, as 'The Big Hurt'"],["Luis Aparicio","SS, 1956–1962, 1968–1970","Redefined shortstop defense for a generation"],["Nellie Fox","2B, 1950–1963","1959 AL MVP and a 12-time All-Star"],["Paul Konerko","1B, 1999–2014","Modern-era home run leader and 2005 champion"],["Minnie Minoso","OF, 1950s–1980","Franchise pioneer and trailblazing Black Latino star"]],
+schedule:[["Jul 30","Yankees"],["Aug 7–9","Guardians"],["Aug 11–13","Reds"],["Aug 20","Braves"],["Aug 21–23","Mets"],["Aug 24–26","Rangers"],["Sep 4–6","Twins"],["Sep 8–10","Pirates"],["Sep 17–20","Tigers"],["Sep 25–27","Rockies"]]},
+
+{id:"progressive-field",name:"Progressive Field",team:"Cleveland Guardians",league:"AL Central",city:"Cleveland, OH",opened:1994,capacity:"34,830",roof:"Open air",image:"Proressive_Field_(7914109426).jpg",lat:41.4962,lon:-81.6852,
+tagline:"Cleveland's cozy classic, with statues watching your every move.",
+food:"Polish Boy sandwiches and Cleveland's own Barrio tacos bring real local flavor, and the regional craft beer list holds its own against anywhere in the league.",
+watching:"One of the best '90s retro parks ever built — intimate, low-slung, and genuinely good sightlines from nearly every seat you can buy.",
+knowBeforeYouGo:"The upper deck in right field sits noticeably farther from the action than the rest of the bowl suggests. Gateway District garages fill up fast on weekends, so beat the rush.",
+xfactor:"Heritage Park beyond center field honors franchise legends with actual statues — Larry Doby and Jim Thome watching over the outfield like very supportive ghosts.",
+tips:"It's an easy downtown walk from most hotels, with the Gateway District's bars ready before and after.",
+factoid:"As Jacobs Field in the '90s, this place hosted 455 consecutive sellouts — a franchise record nobody's come close to since.",
+didYouKnow:"The team dropped the Indians name for Guardians in 2022, borrowing it from the massive Guardians of Traffic statues on the nearby Hope Memorial Bridge. Very on-brand for a city that likes its landmarks literal.",
+greats:[["Bob Feller","P, 1936–1956","Threw three no-hitters, a fireballer since his teens"],["Larry Doby","OF, 1947–1955, 1958","First Black player in American League history"],["Jim Thome","1B/DH, 1991–2002, 2011","Franchise home run king and beloved fan favorite"],["Nap Lajoie","2B, 1902–1914","The franchise was once literally named after him"],["Kenny Lofton","OF, 1992–2001, 2007","Six-time All-Star and relentless base-stealer"]],
+schedule:[["Jul 31 – Aug 2","Diamondbacks"],["Aug 4–6","Mets"],["Aug 14–16","Padres"],["Aug 18–20","Giants"],["Aug 28–30","Royals"],["Sep 1–3","Blue Jays"],["Sep 4–6","Tigers"],["Sep 14–16","White Sox"],["Sep 18–20","Athletics"]]},
+
+{id:"comerica-park",name:"Comerica Park",team:"Detroit Tigers",league:"AL Central",city:"Detroit, MI",opened:2000,capacity:"41,083",roof:"Open air",image:"Comerica_Park,_Home_of_the_Detroit_Tigers_Baseball_Team.jpg",lat:42.339,lon:-83.0485,
+tagline:"Part ballpark, part amusement park, all Detroit.",
+food:"Coney dogs and Detroit-style deep-dish are the local requirements, backed by a solid regional beer lineup.",
+watching:"Wide-open concourses and an unobstructed bowl mean good views from almost any seat — a rare bit of straightforward honesty from a modern ballpark.",
+knowBeforeYouGo:"Sightlines are genuinely excellent thanks to the open design, though center field seats sit oddly far from home plate. Parking is plentiful downtown and exit traffic is refreshingly light for a modern park.",
+xfactor:"There's a working carousel and a Ferris wheel with baseball-shaped gondolas inside the ballpark. Not a metaphor — an actual carnival ride, at a baseball game.",
+tips:"Comerica sits right in Detroit's downtown entertainment district, an easy walk from Ford Field.",
+factoid:"Giant tiger statues flank the main entrance and have become the unofficial photo-op of the whole ballpark.",
+didYouKnow:"Ty Cobb's .366 career average, mostly compiled right here in Detroit, is still the highest in MLB history — over a hundred years and counting.",
+greats:[["Ty Cobb","OF, 1905–1926","Holds the highest career batting average in MLB history"],["Al Kaline","OF, 1953–1974","Spent his entire 22-year career with Detroit"],["Miguel Cabrera","1B/3B, 2008–2023","Won the Triple Crown in 2012, first in 45 years"],["Hank Greenberg","1B, 1930–1946","Two-time MVP and one of the game's first great Jewish stars"],["Alan Trammell","SS, 1977–1996","Cornerstone of Detroit's 1984 championship team"]],
+schedule:[["Aug 11–13","Guardians"],["Aug 14–16","White Sox"],["Aug 24–26","Rays"],["Aug 28–30","Dodgers"],["Sep 7–9","Twins"],["Sep 11–13","Rockies"],["Sep 21–23","Nationals"],["Sep 25–27","Pirates"]]},
+
+{id:"kauffman-stadium",name:"Kauffman Stadium",team:"Kansas City Royals",league:"AL Central",city:"Kansas City, MO",opened:1973,capacity:"37,903",roof:"Open air",image:"NewKauffman.jpg",lat:39.0517,lon:-94.4803,
+tagline:"Baseball's prettiest fountains, with a game attached.",
+food:"Kansas City takes its BBQ seriously, and the burnt ends inside the park genuinely earn the city's reputation. A Boulevard beer completes the experience.",
+watching:"A clean, symmetrical bowl gives good sightlines throughout, and what's beyond the outfield makes this one of the most scenic parks in the sport.",
+knowBeforeYouGo:"There's no walkable transit here — the stadium sits well outside downtown, so budget real drive time. Day games can put the setting sun directly in your eyes, especially in July and August, so plan your seat accordingly.",
+xfactor:"A 322-foot-wide crown-shaped fountain beyond the outfield wall is the largest privately funded fountain on the planet, and yes, you can book seats within splashing distance.",
+tips:"It's part of the Truman Sports Complex alongside Arrowhead — plan on driving, not transit.",
+factoid:"The fountains have been the signature move here since 1973 and remain one of the most photographed spots in the sport.",
+didYouKnow:"George Brett hit .390 in 1980 — the closest anyone's gotten to .400 since Ted Williams actually did it. All 3,154 of his hits came in a Royals uniform.",
+greats:[["George Brett","3B, 1973–1993","Flirted with .400 for most of the 1980 season"],["Bo Jackson","OF, 1986–1990","Two-sport star remembered for plays nobody else could make"],["Frank White","2B, 1973–1990","Homegrown Gold Glove second baseman"],["Willie Wilson","OF, 1976–1990","Blazing speed atop the 1985 championship lineup"],["Salvador Perez","C, 2011–present","Face of the franchise and 2015 World Series MVP"]],
+schedule:[["Aug 4–6","Twins"],["Aug 7–9","Cubs"],["Aug 17–20","Athletics"],["Aug 21–23","Tigers"],["Sep 1–3","Marlins"],["Sep 4–6","Blue Jays"],["Sep 7–9","Diamondbacks"],["Sep 22–24","White Sox"],["Sep 25–27","Guardians"]]},
+
+{id:"target-field",name:"Target Field",team:"Minnesota Twins",league:"AL Central",city:"Minneapolis, MN",opened:2010,capacity:"38,544",roof:"Open air",image:"Target_Field_Aerial.jpg",lat:44.9817,lon:-93.2776,
+tagline:"Minneapolis skyline views, minus the roof.",
+food:"The Juicy Lucy — a burger with the cheese stuffed inside instead of on top — is a genuine Minnesota original, alongside Kramarczuk's sausages and strong local beer.",
+watching:"A compact, open-air bowl with the downtown skyline rising behind the outfield makes this one of the most photogenic sightlines in baseball.",
+knowBeforeYouGo:"April and October games get legitimately cold — dress like you mean it. The light rail station right outside the gates makes this one of the easiest parks in the league to actually leave.",
+xfactor:"That skyline backdrop is gorgeous, but this is also one of the chilliest outdoor parks in MLB — pack a coat even if the calendar disagrees.",
+tips:"Target Field has its own light rail and commuter rail station right outside the gates — no exit strategy required.",
+factoid:"The Target Plaza and its overhang canopies were specifically engineered to shield fans from Minnesota's famously moody spring weather.",
+didYouKnow:"Harmon Killebrew retired with 573 home runs — the most ever by a right-handed AL hitter at the time. Minnesotans still say his name with real reverence.",
+greats:[["Rod Carew","2B/1B, 1967–1978","Won seven batting titles, most of them here"],["Kirby Puckett","OF, 1984–1995","Led the Twins to titles in 1987 and 1991"],["Harmon Killebrew","1B/3B, 1954–1974","One of the great power hitters of the 1960s"],["Tony Oliva","OF, 1962–1976","Three-time batting champ and Rookie of the Year"],["Joe Mauer","C, 2004–2018","Only AL catcher ever to win a batting title — he won three"]],
+schedule:[["Jul 30","Royals"],["Aug 10–12","Orioles"],["Aug 13–16","Phillies"],["Aug 17–19","Braves"],["Aug 28–30","White Sox"],["Aug 31 – Sep 2","Tigers"],["Sep 11–13","Guardians"],["Sep 14–16","Yankees"],["Sep 25–27","Rangers"]]},
+
+{id:"daikin-park",name:"Daikin Park",team:"Houston Astros",league:"AL West",city:"Houston, TX",opened:2000,capacity:"41,168",roof:"Retractable",image:"Minute_Maid_Park_2010.JPG",lat:29.7573,lon:-95.3555,
+tagline:"A train runs above left field, and honestly, why not.",
+food:"Texas BBQ brisket sandwiches and solid Tex-Mex headline the concessions, with plenty of local craft beer to wash it down.",
+watching:"The retractable roof keeps Houston's heat and humidity outside where they belong, and sightlines throughout are modern and solid.",
+knowBeforeYouGo:"The roof stays closed for most summer games, which is comfortable but means the noise really builds up under that ceiling. The train and locomotive above left field are worth admiring before first pitch, not just when it goes off.",
+xfactor:"A full-size replica 1860s locomotive rides the tracks above left field after every Astros home run and win — genuinely one of the more delightful gimmicks in the sport.",
+tips:"Expect the roof closed on hot summer days — this is one of the more reliably air-conditioned parks around.",
+factoid:"The park's name changed from Minute Maid to Daikin in 2025, but longtime fans still just call it 'the Juice Box' out of habit.",
+didYouKnow:"This team started life as the Houston Colt .45s before renaming to the Astros in 1965 to match the newly built, very space-age Astrodome. Space City, indeed.",
+greats:[["Craig Biggio","2B, 1988–2007","20 years, one team, 3,060 hits"],["Jeff Bagwell","1B, 1991–2005","1994 NL MVP, cornerstone of the 'Killer B's'"],["Nolan Ryan","P, 1980–1988","Threw part of his record seven no-hitters right here"],["Jose Altuve","2B, 2011–present","2017 AL MVP and the franchise's all-time hits leader"],["Roy Oswalt","P, 2001–2010","Ace of the 2005 World Series pitching staff"]],
+schedule:[["Jul 31 – Aug 2","Rangers"],["Aug 3–5","Blue Jays"],["Aug 14–16","Mariners"],["Aug 18–20","Angels"],["Aug 21–23","Athletics"],["Aug 31 – Sep 3","White Sox"],["Sep 4–6","Diamondbacks"],["Sep 15–17","Royals"],["Sep 18–20","Braves"]]},
+
+{id:"angel-stadium",name:"Angel Stadium",team:"Los Angeles Angels",league:"AL West",city:"Anaheim, CA",opened:1966,capacity:"45,050",roof:"Open air",image:"Angel_Stadium_of_Anaheim.jpg",lat:33.8003,lon:-117.8827,
+tagline:"Geysers, fire, and a very patient halo.",
+food:"Solid Southern California ballpark fare, local burger stands, and a craft beer garden that benefits from the neighborhood's overall good taste.",
+watching:"One of the older parks left in the league, but a 1998 renovation opened up the outfield and made this a genuinely better watch than its football-stadium past.",
+knowBeforeYouGo:"Getting out of the parking lots after a sellout can eat 45 minutes of your night, since everyone funnels onto the same freeway ramps. Sit on the third-base side for shade during day games.",
+xfactor:"A man-made rock formation beyond the outfield erupts with fire and geysers after every Angels home run, right under the iconic 'Big A' halo sign.",
+tips:"It's minutes from Disneyland, so this basically writes its own family itinerary.",
+factoid:"The stadium's future keeps coming up in conversation — the Angels have periodically explored new stadium deals in Anaheim without pulling the trigger.",
+didYouKnow:"Nolan Ryan threw four of his record seven career no-hitters as an Angel. Nobody's come close to that number since, and probably never will.",
+greats:[["Nolan Ryan","P, 1972–1979","Four no-hitters, all fastball, zero mercy"],["Vladimir Guerrero","OF, 2004–2009","2004 MVP who swung at pitches nowhere near the zone and still hit them"],["Tim Salmon","OF, 1992–2006","Franchise icon and 1993 Rookie of the Year"],["Mike Trout","OF, 2011–present","Multiple MVPs and one of the most complete players alive"],["Chuck Finley","P, 1986–1999","Franchise leader in wins and strikeouts"]],
+schedule:[["Jul 31 – Aug 2","Brewers"],["Aug 10–13","Rangers"],["Aug 14–16","Royals"],["Aug 24–26","Guardians"],["Aug 28–30","Phillies"],["Aug 31 – Sep 2","Yankees"],["Sep 14–16","Mariners"],["Sep 17–20","Twins"]]},
+
+{id:"sutter-health-park",name:"Sutter Health Park",team:"Athletics",league:"AL West",city:"West Sacramento, CA",opened:2000,capacity:"10,624",roof:"Open air",image:"Aerial_view_of_Sutter_Health_Park_in_2024.jpg",lat:38.5802,lon:-121.5133,
+tagline:"MLB's smallest stage, mid-relocation and not pretending otherwise.",
+food:"A scaled-down concession lineup of local Sacramento food trucks and regional craft beer — think farmers market, not stadium food court.",
+watching:"Because it's a Triple-A park doing big-league duty, the seating is close and intimate in a way nothing else in MLB currently offers. You are, quite literally, right on top of it.",
+knowBeforeYouGo:"This is a genuinely small, minor-league venue, so don't expect the concourse sprawl of a typical MLB park. Double-check the schedule too — some 'home' games are actually played in Las Vegas during the move.",
+xfactor:"There's simply nothing else like this in the majors: a Triple-A stadium, shared with the Sacramento River Cats, hosting a big-league team mid-move to Las Vegas.",
+tips:"This is a smaller, lower-key experience than a typical MLB trip — go in with different expectations and you'll have fun.",
+factoid:"At roughly 10,600 seats, this is the smallest ballpark to host a full-time MLB team in the modern era, by a wide margin.",
+didYouKnow:"The A's have now called four cities home — Philadelphia, Kansas City, Oakland, and West Sacramento — with Las Vegas on deck. Baseball's most well-traveled franchise, no contest.",
+greats:[["Rickey Henderson","OF, 1979–1998 (on/off)","MLB's all-time leader in steals and runs scored"],["Reggie Jackson","OF, 1967–1975, 1987","Power-hitting star of the early-70s dynasty teams"],["Jimmie Foxx","1B, 1925–1935","Back-to-back MVPs during the Philadelphia A's era"],["Dennis Eckersley","P, 1987–1995","Basically invented the modern closer role"],["Jose Canseco","OF, 1985–1992","Founding member of the 40-40 club"]],
+schedule:[["Jul 30","Red Sox"],["Jul 31 – Aug 2","Tigers"],["Aug 10–12","Rays"],["Aug 14–16","Rangers"],["Aug 24–26","Twins"],["Aug 28–30","Orioles"],["Sep 7–9","Blue Jays"],["Sep 11–13","Mariners"],["Sep 22–23","Angels"],["Sep 24–27","Astros"]]},
+
+{id:"t-mobile-park",name:"T-Mobile Park",team:"Seattle Mariners",league:"AL West",city:"Seattle, WA",opened:1999,capacity:"47,929",roof:"Retractable",image:"Safeco_Field,_Seattle-.jpg",lat:47.5914,lon:-122.3325,
+tagline:"Elegant, chilly, and quietly one of the best in baseball.",
+food:"Ivar's fish and chips and genuinely good sushi headline a food scene that punches well above the usual ballpark standard, backed by an outstanding craft beer program.",
+watching:"Widely regarded as a pitcher's park with excellent sightlines and views of the skyline and Puget Sound beyond the outfield — a strong contender for prettiest seat in baseball.",
+knowBeforeYouGo:"Bring a layer even in July — the evening chill here is no joke once the sun drops. SoDo fills up fast before big games, so light rail beats driving.",
+xfactor:"The roof isn't really a roof — it's more of an umbrella that slides overhead while the sides stay open, so it never turns into a sealed dome.",
+tips:"It's an easy walk from downtown, with Sound Transit's Stadium Station right nearby.",
+factoid:"Because the sides stay open, the temperature inside still roughly tracks the outdoors even when the roof is technically 'closed.'",
+didYouKnow:"Ichiro Suzuki racked up 262 hits in 2004 — still the single-season record, more than two decades later. Nobody's sniffed it since.",
+greats:[["Ken Griffey Jr.","OF, 1989–1999, 2009–2010","A swing that defined a generation"],["Ichiro Suzuki","OF, 2001–2012, 2018","Holds the single-season hits record, 262 in 2004"],["Edgar Martinez","DH, 1987–2004","So good at the role, MLB named the DH award after him"],["Randy Johnson","P, 1989–1998","'The Big Unit,' a nightmare for left-handed hitters"],["Felix Hernandez","P, 2005–2019","Threw a perfect game in 2012 and anchored the rotation for years"]],
+schedule:[["Jul 31 – Aug 2","Twins"],["Aug 4–6","Tigers"],["Aug 7–9","Rays"],["Aug 21–23","Cubs"],["Aug 24–26","Phillies"],["Sep 3–6","Athletics"],["Sep 8–10","Rangers"],["Sep 22–23","Astros"],["Sep 24–27","Angels"]]},
+
+{id:"globe-life-field",name:"Globe Life Field",team:"Texas Rangers",league:"AL West",city:"Arlington, TX",opened:2020,capacity:"40,300",roof:"Retractable",image:"Globelifefield_june2020.jpg",lat:32.7473,lon:-97.0847,
+tagline:"Climate control, Texas-sized, championship included.",
+food:"Texas BBQ and an actual campfire s'mores station headline a genuinely deep regional beer list.",
+watching:"Full climate control means Texas summer heat stays outside, and the sightlines throughout this modern bowl are clean and consistent.",
+knowBeforeYouGo:"The controlled climate is comfortable but can feel a little less like a classic outdoor ballpark experience. The Arlington entertainment district gets seriously congested when a Rangers game overlaps with a Cowboys game or a big concert nearby.",
+xfactor:"It sits directly across the street from Six Flags and the Rangers' old ballpark, and famously hosted the entire 2020 World Series as a neutral, bio-secure 'bubble' — baseball's strangest championship setting in decades.",
+tips:"It's part of the larger Arlington entertainment district between Dallas and Fort Worth — easy to pair with a trip to AT&T Stadium.",
+factoid:"This is one of the only MLB parks to have hosted a full World Series on a neutral field instead of at either team's actual home.",
+didYouKnow:"Despite decades of star power, the Rangers didn't win their first title until 2023 — after two heartbreaking World Series losses in 2010 and 2011. Third time, as they say.",
+greats:[["Ivan Rodriguez","C, 1991–2002","Widely regarded as one of the best defensive catchers ever"],["Adrian Beltre","3B, 2011–2018","Reached 3,000 hits in a Rangers uniform"],["Michael Young","SS/3B/2B, 2000–2012","Franchise hits leader and seven-time All-Star"],["Nolan Ryan","P, 1989–1993","Closed out his legendary career in Texas"],["Juan Gonzalez","OF, 1989–1999, 2002–2003","Two-time AL MVP power hitter"]],
+schedule:[["Aug 3–5","Giants"],["Aug 7–9","Orioles"],["Aug 18–20","Nationals"],["Aug 21–23","Angels"],["Aug 31 – Sep 2","Athletics"],["Sep 3–6","Rays"],["Sep 15–17","Red Sox"],["Sep 18–20","Blue Jays"],["Sep 22–24","Mets"]]},
+
+{id:"truist-park",name:"Truist Park",team:"Atlanta Braves",league:"NL East",city:"Cumberland, GA",opened:2017,capacity:"41,084",roof:"Open air",image:"Water_Feature_at_Truist_Park.jpg",lat:33.8908,lon:-84.4677,
+tagline:"A whole neighborhood built around nine innings.",
+food:"Southern comfort food and Chophouse-style options anchor a genuinely wide spread of choices scattered throughout The Battery.",
+watching:"A modern, wide-open bowl gives strong sightlines from nearly every seat — no real weak spots to worry about here.",
+knowBeforeYouGo:"Truist Park sits outside Atlanta proper in Cobb County, so I-75 and the Cobb Parkway can turn ugly before and after games. There's no rail transit, so plan for a drive or a rideshare and some patience.",
+xfactor:"The Battery Atlanta — restaurants, bars, a hotel, the works — was built directly around the stadium, so game day starts long before you find your seat.",
+tips:"Plan for suburban traffic and parking here rather than a downtown-transit experience.",
+factoid:"This might be the only MLB park built with an entire mixed-use neighborhood attached from day one instead of bolted on years later.",
+didYouKnow:"Hank Aaron broke Babe Ruth's all-time home run record right here in Atlanta in 1974 — while enduring real, ugly racist backlash that he met with remarkable grace.",
+greats:[["Hank Aaron","OF, 1954–1974","Held the all-time home run record for over three decades"],["Chipper Jones","3B, 1993–2012","Switch-hitter and 1999 NL MVP, one team, whole career"],["Greg Maddux","P, 1993–2003","Four straight Cy Youngs spanning Cubs and Braves years"],["Warren Spahn","P, 1942–1964","Most wins by a lefty in MLB history"],["John Smoltz","P, 1988–2008","Rare pitcher with 200 wins and 150 saves in one career"]],
+schedule:[["Jul 30 – Aug 2","Nationals"],["Aug 4–6","Marlins"],["Aug 10–12","Mets"],["Aug 14–16","Diamondbacks"],["Aug 25–27","Dodgers"],["Aug 28–30","Rockies"],["Aug 31","Giants"],["Sep 8–10","Rays"],["Sep 11–13","Phillies"],["Sep 22–24","Reds"]]},
+
+{id:"loandepot-park",name:"loanDepot park",team:"Miami Marlins",league:"NL East",city:"Miami, FL",opened:2012,capacity:"36,742",roof:"Retractable",image:"LoanDepot_Park.jpg",lat:25.7781,lon:-80.2197,
+tagline:"Climate-controlled, a little quiet, occasionally a work of art.",
+food:"Cuban sandwiches and ceviche lean hard into Miami's Latin food culture, which is a very welcome break from the usual ballpark menu.",
+watching:"The retractable roof guarantees comfort against Miami's heat, humidity, and pop-up storms, with solid, modern sightlines throughout.",
+knowBeforeYouGo:"The roof stays closed for the vast majority of games, so don't come expecting much of an open-air feel. Crowds have historically been thin — bad for atmosphere, great for not fighting anyone for a bathroom line.",
+xfactor:"A massive, colorful home run sculpture by artist Red Grooms spins and lights up after every Marlins homer — genuinely one of the most argued-about pieces of ballpark art in the sport.",
+tips:"The roof's usually closed given Miami's weather; the park sits close to Little Havana, worth the detour before or after.",
+factoid:"That sculpture proved so polarizing it got relocated from a prime field-level spot to the center field concourse during a 2017 renovation. Baseball's most public art dispute.",
+didYouKnow:"The Marlins won it all in 2003 as a wild card, just six years after their first title in 1997 — an oddly successful franchise for a team that struggles to fill seats.",
+greats:[["Giancarlo Stanton","OF, 2010–2017","Hit 59 homers in 2017, an NL record for a righty at the time"],["Miguel Cabrera","3B, 2003–2007","Won the 2003 World Series as a 20-year-old rookie"],["Jose Fernandez","P, 2013–2016","Electric young ace whose career was cut tragically short"],["Hanley Ramirez","SS, 2006–2012","2006 Rookie of the Year and 2009 batting champ"],["Dontrelle Willis","P, 2003–2007","High-kick delivery, 2003 Rookie of the Year"]],
+schedule:[["Aug 7–9","Angels"],["Aug 11–13","Pirates"],["Aug 21–23","Nationals"],["Aug 24–26","Red Sox"],["Sep 4–6","Cubs"],["Sep 7–9","Mets"],["Sep 11–13","Dodgers"],["Sep 25–27","Braves"]]},
+
+{id:"citi-field",name:"Citi Field",team:"New York Mets",league:"NL East",city:"Queens, NY",opened:2009,capacity:"41,922",roof:"Open air",image:"Citi_Field_Night_Game.jpg",lat:40.7571,lon:-73.8458,
+tagline:"Shake Shack's original home turf, with a ballgame attached.",
+food:"Shake Shack essentially launched its ballpark career here, and the food hall leans into everything great about New York's food scene.",
+watching:"Wide concourses and generally good sightlines throughout, with architectural nods to old Ebbets Field that longtime fans appreciate.",
+knowBeforeYouGo:"The 7 train packs in hard heading back to Manhattan right after the last out — waiting 15–20 minutes on the platform is often faster than fighting the first crush. The food hall near the entrance draws serious lines right before first pitch.",
+xfactor:"The Jackie Robinson Rotunda at the main entrance is a direct nod to Ebbets Field's famous entrance — a tribute to a legacy the Mets never actually witnessed firsthand.",
+tips:"The 7 train's Mets–Willets Point stop drops you right at the gates — easiest commute in the sport.",
+factoid:"A giant apple rises up behind the outfield wall every single time the Mets homer, because subtlety was never really the plan.",
+didYouKnow:"The 1962 Mets lost a record 120 games in their debut season, then somehow won the World Series just seven years later. Baseball's strangest turnaround story.",
+greats:[["Tom Seaver","P, 1967–1977, 1983","Franchise's greatest pitcher and 1969 Miracle Mets ace"],["Mike Piazza","C, 1998–2005","Arguably the best-hitting catcher in MLB history"],["David Wright","3B, 2004–2018","Franchise captain and career hits leader"],["Darryl Strawberry","OF, 1983–1990","Power-hitting star of the 1986 championship team"],["Dwight Gooden","P, 1984–1994","Won the 1985 NL Cy Young at just 20 years old"]],
+schedule:[["Jul 30 – Aug 2","Marlins"],["Aug 14–16","Nationals"],["Aug 17–19","Padres"],["Aug 25–27","Brewers"],["Aug 28–30","Astros"],["Sep 4–6","Giants"],["Sep 14–16","Orioles"],["Sep 17–20","Phillies"]]},
+
+{id:"citizens-bank-park",name:"Citizens Bank Park",team:"Philadelphia Phillies",league:"NL East",city:"Philadelphia, PA",opened:2004,capacity:"42,792",roof:"Open air",image:"Citizens_Bank_Park_2021.jpg",lat:39.9061,lon:-75.1665,
+tagline:"Loud, proud, and extremely serious about crab fries.",
+food:"Actual Philly cheesesteak vendors (Tony Luke's, Campo's) plus Chickie's & Pete's crab fries make this a legitimate top-tier food scene, not just a ballpark one.",
+watching:"Good sightlines throughout, though the crowd noise is arguably as much a part of the show as anything happening on the field.",
+knowBeforeYouGo:"The crowd here is loud and can get genuinely hostile toward visiting teams — some people love that energy, others should brace themselves. The Broad Street Line fills up fast, and rideshare pickup can be a slog after weekend games.",
+xfactor:"Ashburn Alley behind center field feels like a boardwalk food court crossed with a museum, complete with the team's actual Hall of Fame.",
+tips:"It's part of South Philly's sports complex alongside the Eagles and Sixers venues, with Broad Street Line access.",
+factoid:"This ballpark's food scene routinely lands on best-in-sports lists, and honestly, it deserves it.",
+didYouKnow:"The Phillies were the first pro franchise in North America to lose 10,000 games, a milestone reached in 2007. Every fan base needs a dark sense of humor, and Philly's earned theirs.",
+greats:[["Mike Schmidt","3B, 1972–1989","Three MVPs, arguably the greatest third baseman ever"],["Steve Carlton","P, 1972–1986","Four Cy Youngs, nicknamed 'Lefty' for good reason"],["Chase Utley","2B, 2003–2015","Cornerstone of the 2008 championship team"],["Jimmy Rollins","SS, 2000–2014","2007 NL MVP and franchise hits leader"],["Robin Roberts","P, 1948–1961","Six straight 20-win seasons in the 1950s"]],
+schedule:[["Aug 3–6","Nationals"],["Aug 7–9","Blue Jays"],["Aug 17–19","Marlins"],["Aug 21–23","Cardinals"],["Sep 4–7","Braves"],["Sep 8–10","Astros"],["Sep 22–24","Brewers"],["Sep 25–27","Rays"]]},
+
+{id:"nationals-park",name:"Nationals Park",team:"Washington Nationals",league:"NL East",city:"Washington, D.C.",opened:2008,capacity:"41,339",roof:"Open air",image:"Aerial_view_of_Nationals_Park.jpg",lat:38.873,lon:-77.0074,
+tagline:"Presidential foot races and a genuinely underrated food scene.",
+food:"Ben's Chili Bowl half-smokes are the signature D.C. move, backed by a solid, diverse spread of local vendors.",
+watching:"A modern, clean bowl with riverfront glimpses from some concourses and solid sightlines throughout.",
+knowBeforeYouGo:"The Navy Yard-Ballpark Metro stop gets a real squeeze after getaway-day games, so budget extra time. Upper-deck seats down the lines sit noticeably farther from the action than the lower bowl.",
+xfactor:"The Racing Presidents — Washington, Jefferson, Lincoln, and Teddy Roosevelt sprinting the warning track in the fourth inning — is genuinely one of the best in-game bits in the sport.",
+tips:"The Navy Yard-Ballpark Metro stop sits right outside the gates, in a neighborhood that's grown up around the park.",
+factoid:"Teddy Roosevelt famously 'lost' the Presidents Race for years as a running joke, until he finally, gloriously won for the first time in 2012.",
+didYouKnow:"This franchise started life in 1969 as the Montreal Expos, spending 35 years in Canada before relocating to D.C. in 2005. Ask a Montreal fan about it — carefully.",
+greats:[["Ryan Zimmerman","3B, 2005–2021","The franchise's first-ever draft pick and longest-tenured player"],["Bryce Harper","OF, 2012–2018","2015 MVP and Rookie of the Year before he departed"],["Max Scherzer","P, 2015–2021","Multiple Cy Youngs and a key piece of the 2019 title team"],["Stephen Strasburg","P, 2010–2023","2019 World Series MVP"],["Juan Soto","OF, 2018–2022","A generational bat as a teenager on the 2019 champions"]],
+schedule:[["Aug 7–9","Reds"],["Aug 11–13","Cubs"],["Aug 24–27","Rockies"],["Aug 28–31","Marlins"],["Sep 1–2","Braves"],["Sep 11–13","Angels"],["Sep 15–16","Phillies"],["Sep 25–27","Mets"]]},
+
+{id:"wrigley-field",name:"Wrigley Field",team:"Chicago Cubs",league:"NL Central",city:"Chicago, IL",opened:1914,capacity:"41,649",roof:"Open air",image:"Wrigley_Field,_Chicago,_Illinois_(42488207635).jpg",lat:41.9484,lon:-87.6553,
+tagline:"Ivy, obstructed views, and 108 years of waiting.",
+food:"Chicago dogs (no ketchup, ever) and Italian beef sandwiches pair with an Old Style beer tradition that's basically written into the neighborhood's DNA.",
+watching:"The ivy-covered brick walls are iconic for a reason, but the park's age means real obstructed-view seats exist — the atmosphere mostly makes up for it, mostly.",
+knowBeforeYouGo:"Check seat maps carefully — the upper deck overhang and support poles genuinely block some views. Wrigleyville gets packed on the walk in from the Red Line, especially before afternoon getaway games.",
+xfactor:"Rooftop seating on the actual apartment buildings across the street from the outfield walls is a sight you won't find anywhere else in the sport.",
+tips:"The Red Line's Addison stop puts you right in Wrigleyville, which is basically part of the ticket price.",
+factoid:"The hand-turned scoreboard above center field has been running since 1937 and has never once been swapped for an electronic one. Some traditions just don't need fixing.",
+didYouKnow:"The Cubs went 108 years between titles — the 'Curse of the Billy Goat' — before finally breaking it in 2016. An entire city cried, and honestly, fair enough.",
+greats:[["Ernie Banks","SS/1B, 1953–1971","'Mr. Cub,' two-time MVP and relentlessly positive"],["Ryne Sandberg","2B, 1981–1997","1984 MVP and one of the best defensive second basemen ever"],["Ferguson Jenkins","P, 1966–1973, 1982–1983","1971 Cy Young winner and franchise strikeout king"],["Sammy Sosa","OF, 1992–2004","Part of the unforgettable 1998 home run chase"],["Billy Williams","OF, 1959–1974","Played 1,117 straight games without missing a beat"]],
+schedule:[["Jul 31 – Aug 2","Yankees"],["Aug 3–5","Dodgers"],["Aug 6","Blue Jays"],["Aug 14–16","Cardinals"],["Aug 17–19","White Sox"],["Aug 28–30","Reds"],["Aug 31 – Sep 3","Brewers"],["Sep 11–13","Pirates"],["Sep 14–16","Braves"],["Sep 22–24","Marlins"]]},
+
+{id:"great-american-ball-park",name:"Great American Ball Park",team:"Cincinnati Reds",league:"NL Central",city:"Cincinnati, OH",opened:2003,capacity:"42,319",roof:"Open air",image:"Great_American_Ballpark_2007.jpg",lat:39.0975,lon:-84.5074,
+tagline:"Riverfront views and smokestacks that mean business.",
+food:"Cincinnati chili — yes, on a hot dog, don't question it — is a must-try alongside the standard Reds-themed lineup.",
+watching:"Riverfront views of the Ohio and the Kentucky skyline beyond the outfield make for a genuinely scenic backdrop, with good sightlines from most sections.",
+knowBeforeYouGo:"Upper outfield seats sit surprisingly far from the plate given the park's overall modest footprint. Downtown garages fill fast near the riverfront, but it's an easy walk from most of them.",
+xfactor:"Two 138-foot smokestacks beyond the outfield shoot fire and steam after every Reds home run — a nod to the steamboat era that once ruled this riverfront.",
+tips:"It's an easy, walkable riverfront spot near the Reds Hall of Fame and downtown.",
+factoid:"Those smokestacks are a direct callback to the steamboats that used to crowd Cincinnati's waterfront — a nice bit of civic memory, tastefully set on fire.",
+didYouKnow:"The 'Big Red Machine' of the 1970s — Bench, Rose, Morgan, Perez — won back-to-back titles in 1975 and 1976 and remain one of the greatest lineups ever assembled, full stop.",
+greats:[["Johnny Bench","C, 1967–1983","Widely considered the greatest catcher in MLB history"],["Pete Rose","OF/1B/3B, 1963–1986","MLB's all-time hits leader with 4,256"],["Joe Morgan","2B, 1972–1979","Back-to-back MVP during the Big Red Machine era"],["Barry Larkin","SS, 1986–2004","1995 MVP, entire career spent in Cincinnati"],["Frank Robinson","OF, 1956–1965","1961 MVP before he went on to star in Baltimore too"]],
+schedule:[["Jul 30 – Aug 2","Pirates"],["Aug 4–6","Athletics"],["Aug 14–16","Marlins"],["Aug 17–20","Cardinals"],["Aug 31 – Sep 2","Padres"],["Sep 4–6","Brewers"],["Sep 14–17","Dodgers"],["Sep 18–20","Cubs"]]},
+
+{id:"american-family-field",name:"American Family Field",team:"Milwaukee Brewers",league:"NL Central",city:"Milwaukee, WI",opened:2001,capacity:"41,900",roof:"Retractable",image:"Miller_Park0001.jpg",lat:43.028,lon:-87.9712,
+tagline:"Sausages race, roofs retract, tailgates never stop.",
+food:"Bratwurst is non-negotiable here, and Milwaukee's brewing heritage means the local beer selection is, unsurprisingly, outstanding.",
+watching:"A fan-shaped retractable roof keeps things climate-controlled and comfortable, with solid sightlines throughout the bowl.",
+knowBeforeYouGo:"Rain is rarely an issue thanks to the roof, but the parking-lot tailgate culture means arriving right before first pitch can mean a long hike from the outer lots.",
+xfactor:"The Klement's Sausage Race during the sixth inning — five costumed sausages sprinting for glory — has become one of the most genuinely beloved traditions in the sport, rivalries and all.",
+tips:"Milwaukee tailgates like it's an NFL game, not an MLB one — get there early and join in.",
+factoid:"The Sausage Race is popular enough to have its own scandals, including a real 'sausage sabotage' incident in 2003. Baseball's weirdest rivalry.",
+didYouKnow:"Hank Aaron closed out his playing career here in 1976, returning to the city where his professional journey with the Braves organization first began decades earlier.",
+greats:[["Robin Yount","SS/OF, 1974–1993","Two MVPs, an entire 20-year career in Milwaukee"],["Paul Molitor","3B/DH, 1978–1992","Remembered for a legendary 39-game hit streak in 1987"],["Ryan Braun","OF, 2007–2020","2011 NL MVP and franchise home run leader"],["Rollie Fingers","P, 1981–1985","1981 MVP and Cy Young as a dominant closer"],["Hank Aaron","OF/DH, 1975–1976","Came home to close out a legendary career"]],
+schedule:[["Aug 3–6","Pirates"],["Aug 7–9","Twins"],["Aug 18–20","Mariners"],["Aug 21–23","Braves"],["Aug 28–30","Rangers"],["Sep 7–9","Cubs"],["Sep 11–13","Reds"],["Sep 25–27","Cardinals"]]},
+
+{id:"pnc-park",name:"PNC Park",team:"Pittsburgh Pirates",league:"NL Central",city:"Pittsburgh, PA",opened:2001,capacity:"38,747",roof:"Open air",image:"PNC-Park-panoramic.jpg",lat:40.4469,lon:-80.0057,
+tagline:"The best skyline in baseball, no notes.",
+food:"Primanti Bros sandwiches — fries and coleslaw stuffed right inside the bread — are the essential Pittsburgh order, alongside solid pierogies.",
+watching:"Consistently rated one of the most beautiful parks in America, with a downtown skyline view across the Allegheny from nearly every seat you can find.",
+knowBeforeYouGo:"The unusually shallow right field wall produces some genuinely weird bounces and sightline angles out there. Walking across the Clemente Bridge from downtown beats driving in for most game times, easily.",
+xfactor:"The view of the Roberto Clemente Bridge and the skyline beyond right field might be the single best backdrop in the sport — no exaggeration required.",
+tips:"On game days, the yellow Clemente Bridge closes to cars and opens to foot traffic — walking it is genuinely part of the experience.",
+factoid:"Right field's wall sits at a tribute-perfect 21 feet, honoring Roberto Clemente's number. Baseball's most elegant Easter egg, hiding in plain sight.",
+didYouKnow:"Clemente got his 3,000th and final career hit in his last regular-season at-bat in 1972, months before he died delivering earthquake relief supplies by plane. Baseball rarely produces a story this quietly devastating.",
+greats:[["Roberto Clemente","OF, 1955–1972","Humanitarian icon and one of the greatest all-around right fielders ever"],["Honus Wagner","SS, 1900–1917","Widely considered the best shortstop of the dead-ball era"],["Willie Stargell","OF/1B, 1962–1982","Led the 'We Are Family' 1979 champions"],["Barry Bonds","OF, 1986–1992","Began his record-setting career right here"],["Paul Waner","OF, 1926–1940","Three-time batting champ, nicknamed 'Big Poison'"]],
+schedule:[["Aug 7–9","Mets"],["Aug 14–16","Red Sox"],["Aug 17–19","Tigers"],["Sep 1–3","Giants"],["Sep 4–6","Angels"],["Sep 15–17","Brewers"],["Sep 18–20","Royals"],["Sep 22–24","Cardinals"]]},
+
+{id:"busch-stadium",name:"Busch Stadium",team:"St. Louis Cardinals",league:"NL Central",city:"St. Louis, MO",opened:2006,capacity:"44,494",roof:"Open air",image:"Busch_Stadium_from_top_of_the_Gateway_Arch.JPG",lat:38.6226,lon:-90.1928,
+tagline:"The Arch watches every pitch, and it approves.",
+food:"Toasted ravioli and St. Louis-style BBQ pair naturally with Anheuser-Busch's entire lineup, in the actual hometown of Budweiser.",
+watching:"A strong sightline park with a direct downtown view of the Gateway Arch beyond the outfield — one of the most recognizable backdrops the sport has to offer.",
+knowBeforeYouGo:"Upper-deck seats down the right field line lose the clean Arch view, so keep that in mind when picking seats. Ballpark Village keeps the area lively well after the last out, which actually helps the exit crowds thin faster.",
+xfactor:"The Gateway Arch towering beyond the outfield wall gives Busch one of the most instantly recognizable views in all of baseball.",
+tips:"It's walkable from downtown, right next to Ballpark Village — built specifically to keep fans around before and after games.",
+factoid:"This is the third stadium in downtown St. Louis to carry the Busch name. Loyalty, or lack of imagination — you decide.",
+didYouKnow:"The Cardinals have won 11 World Series titles, the most of any National League team and second only to the Yankees across all of baseball. Quietly one of the sport's great dynasties.",
+greats:[["Stan Musial","OF/1B, 1941–1963","Franchise icon known simply as 'The Man'"],["Bob Gibson","P, 1959–1975","A 1.12 ERA in 1968 — one of the great pitching seasons ever"],["Albert Pujols","1B, 2001–2011, 2022","Three MVPs and one of the great righty hitters ever"],["Ozzie Smith","SS, 1982–1996","'The Wizard,' the best defensive shortstop history has produced"],["Lou Brock","OF, 1964–1979","Held the career stolen base record for decades"]],
+schedule:[["Jul 30","Cubs"],["Aug 7–9","Rockies"],["Aug 10–12","Phillies"],["Aug 25–27","Orioles"],["Aug 28–30","Pirates"],["Sep 11–13","White Sox"],["Sep 14–16","Giants"],["Sep 18–20","Nationals"]]},
+
+{id:"chase-field",name:"Chase Field",team:"Arizona Diamondbacks",league:"NL West",city:"Phoenix, AZ",opened:1998,capacity:"48,405",roof:"Retractable",image:"Chase_Field_aerial.jpg",lat:33.4455,lon:-112.0667,
+tagline:"A pool in the outfield, because Phoenix in July demands it.",
+food:"Southwestern-inspired concessions round things out, but let's be honest — the real novelty here is the rentable swimming pool in right-center field.",
+watching:"Fully climate-controlled against brutal Phoenix summer heat, with solid sightlines throughout the bowl.",
+knowBeforeYouGo:"The pool and hot tub area is a genuinely useful amenity during Phoenix's brutal summers, not just a gimmick — book it if you can. Upper deck seats can feel more removed from the field than the park's modest size would suggest.",
+xfactor:"There's a literal swimming pool built into the outfield seating that groups can rent during games. Somewhere, a marketing team is very proud of themselves, and honestly, fair.",
+tips:"Expect the roof closed with the A/C running for most summer day games, when it's regularly over 100°F outside.",
+factoid:"This was the first MLB stadium ever built with a swimming pool as an actual seating option. Groundbreaking, in the most literal sense.",
+didYouKnow:"Arizona won the World Series in just its fourth season of existence in 2001 — the fastest an expansion team has ever gone from nothing to champion.",
+greats:[["Randy Johnson","P, 1999–2004, 2007–2008","Co-MVP of the 2001 World Series"],["Luis Gonzalez","OF, 1999–2006","Delivered the championship-winning hit in 2001"],["Paul Goldschmidt","1B, 2011–2018","Multiple MVP finalist and franchise cornerstone"],["Curt Schilling","P, 2000–2003","Postseason ace during the 2001 title run"],["Brandon Webb","P, 2003–2009","2006 Cy Young winner with a devastating sinker"]],
+schedule:[["Aug 3–6","Padres"],["Aug 7–9","Dodgers"],["Aug 10–12","Rockies"],["Aug 21–23","Reds"],["Aug 24–26","Cubs"],["Aug 31 – Sep 2","Phillies"],["Sep 11–13","Rangers"],["Sep 14–16","Marlins"],["Sep 18–20","Yankees"]]},
+
+{id:"coors-field",name:"Coors Field",team:"Colorado Rockies",league:"NL West",city:"Denver, CO",opened:1995,capacity:"46,897",roof:"Open air",image:"Coors_field_aerial_1.JPG",lat:39.7559,lon:-104.9942,
+tagline:"Thin air, big flies, one very hardworking humidor.",
+food:"Rocky Mountain oysters are a genuine (if adventurous) local specialty, and Denver's brewing scene makes for an outstanding craft beer list.",
+watching:"The thin mile-high air turns this into the game's most notorious hitter's park — expect more offense here than almost anywhere else in the league.",
+knowBeforeYouGo:"Day games can put direct sun right in your eyes if you're sitting behind home plate in the lower bowl. Afternoon thunderstorms show up often in summer, so check the forecast even though there's no roof to hide under.",
+xfactor:"A row of purple seats in the upper deck marks the exact 5,280-foot elevation line — one mile above sea level, officially certified by seat color.",
+tips:"Baseballs get stored in a humidor before games specifically to counteract Denver's dry air and tone down the offense a little.",
+factoid:"That humidor, introduced in 2002, was one of the first in MLB and directly targeted how thin air was inflating home run totals into cartoon numbers.",
+didYouKnow:"The same thin air that turns fly balls into home runs also flattens out breaking pitches — which is exactly why the humidor exists in the first place.",
+greats:[["Todd Helton","1B, 1997–2013","Franchise icon and leader in nearly every offensive category"],["Larry Walker","OF, 1995–2004","1997 MVP and a genuine five-tool talent"],["Nolan Arenado","3B, 2013–2020","Gold Gloves and middle-of-the-order power"],["Troy Tulowitzki","SS, 2006–2015","Power-hitting shortstop with real defensive chops"],["Vinny Castilla","3B, 1993–1999, 2004, 2006","Prolific power hitter of the franchise's early years"]],
+schedule:[["Jul 31 – Aug 2","Royals"],["Aug 3–5","Rays"],["Aug 17–19","Dodgers"],["Aug 21–23","Guardians"],["Aug 31 – Sep 2","Orioles"],["Sep 4–6","Cardinals"],["Sep 14–17","Padres"],["Sep 18–20","Mariners"],["Sep 22–24","Diamondbacks"]]},
+
+{id:"dodger-stadium",name:"Dodger Stadium",team:"Los Angeles Dodgers",league:"NL West",city:"Los Angeles, CA",opened:1962,capacity:"56,000",roof:"Open air",image:"Aerial_view_of_Dodger_Stadium,_April_2024.JPG",lat:34.0739,lon:-118.24,
+tagline:"Palm trees, mountains, and a very long walk to your car.",
+food:"The Dodger Dog — a full foot-long hot dog — is a genuine baseball institution, backed by strong Southern California and Mexican-inspired options.",
+watching:"A terraced, hillside bowl gives good sightlines from most levels, with the San Gabriel Mountains rising beyond the outfield like a very scenic flex.",
+knowBeforeYouGo:"Getting out of the hillside lots after a sellout can easily eat 45 minutes to an hour of your evening. Rideshare drop-off or arriving well before first pitch is the move if you value your time.",
+xfactor:"The stadium sits inside an actual canyon, Chavez Ravine, ringed by palm trees and mountains — one of the most genuinely scenic settings in American sports.",
+tips:"Parking rings the hillside around the stadium; getting in and out takes real time, so plan for it.",
+factoid:"At roughly 56,000 seats, this is the largest ballpark by capacity anywhere in MLB — Los Angeles doesn't do things small.",
+didYouKnow:"Jackie Robinson broke MLB's color barrier in 1947 with the then-Brooklyn Dodgers, decades before the franchise ever set foot in Los Angeles. The move west came later; the legacy came first.",
+greats:[["Sandy Koufax","P, 1955–1966","Four no-hitters, including a perfect game — retired at his absolute peak"],["Jackie Robinson","2B, 1947–1956","Broke MLB's color barrier and redefined the sport"],["Clayton Kershaw","P, 2008–present","Three Cy Youngs and the franchise strikeout leader"],["Fernando Valenzuela","P, 1980–1990","'Fernandomania' made him an instant global star as a rookie"],["Duke Snider","OF, 1947–1962","Power-hitting center fielder of the Brooklyn era"]],
+schedule:[["Jul 30","Mariners"],["Jul 31 – Aug 2","Red Sox"],["Aug 10–12","Royals"],["Aug 13–16","Brewers"],["Aug 21–23","Pirates"],["Sep 1–3","Cardinals"],["Sep 4–6","Nationals"],["Sep 7–9","Reds"],["Sep 18–20","Giants"],["Sep 22–24","Padres"]]},
+
+{id:"petco-park",name:"Petco Park",team:"San Diego Padres",league:"NL West",city:"San Diego, CA",opened:2004,capacity:"40,209",roof:"Open air",image:"Petco_Park_Interior.JPG",lat:32.7073,lon:-117.1566,
+tagline:"Perfect weather, a century-old warehouse, and a very good lawn.",
+food:"Fish tacos and Mexican-inspired concessions lean into San Diego's border-city identity, alongside one of the best craft beer scenes in the country.",
+watching:"Mild, genuinely pleasant year-round weather and downtown skyline views make Petco one of the most comfortable places to sit through a full nine innings.",
+knowBeforeYouGo:"The grass berm beyond center field is one of the best cheap-seat deals in the sport, but it fills up fast on weekends — get there early. The Gaslamp Quarter gets crowded before night games, so pad your walking time.",
+xfactor:"The Western Metal Supply Co. building, a preserved 1909 brick warehouse, is built directly into the left field foul pole corner, with actual seating on its rooftop.",
+tips:"It's an easy walk from the Gaslamp Quarter and downtown hotels, and the outfield grass berm offers genuinely cheap lawn seating.",
+factoid:"That warehouse predates the ballpark by nearly a century and was deliberately preserved and built right into the stadium's design — a rare bit of architectural restraint.",
+didYouKnow:"Tony Gwynn won eight batting titles across 20 years, all with San Diego, finishing with a .338 career average. San Diego's most beloved local legend, no contest.",
+greats:[["Tony Gwynn","OF, 1982–2001","Eight batting titles, a .338 career average"],["Trevor Hoffman","P, 1993–2008","Held MLB's career saves record before Mariano Rivera passed him"],["Dave Winfield","OF, 1973–1980","Multi-tool star before his Hall of Fame Yankees years"],["Randy Jones","P, 1973–1980","1976 NL Cy Young winner"],["Fernando Tatis Jr.","SS/OF, 2019–present","Electric young star, highlight-reel plays on repeat"]],
+schedule:[["Jul 30 – Aug 2","Giants"],["Aug 7–9","Astros"],["Aug 10–12","Brewers"],["Aug 21–23","Twins"],["Aug 24–26","Pirates"],["Sep 4–6","Yankees"],["Sep 7–9","Nationals"],["Sep 18–20","Marlins"],["Sep 25–27","Diamondbacks"]]},
+
+{id:"oracle-park",name:"Oracle Park",team:"San Francisco Giants",league:"NL West",city:"San Francisco, CA",opened:2000,capacity:"41,265",roof:"Open air",image:"Aerial_photograph_of_AT%26T_Park,_home_of_the_San_Francisco_Giants.jpg",lat:37.7786,lon:-122.3893,
+tagline:"Garlic fries, cold wind, and a bay full of souvenir balls.",
+food:"Garlic fries are a genuine Bay Area institution, alongside fresh seafood, crab, and Ghirardelli sundaes for dessert.",
+watching:"Waterfront views of the bay beyond right field are stunning, but it gets genuinely cold and windy even in the dead of summer — don't say nobody warned you.",
+knowBeforeYouGo:"The evening wind off the bay can knock down what looked like a sure home run to right field — physics has opinions here. Dress in layers regardless of season; this is reliably one of the coldest parks in MLB even during day games in July.",
+xfactor:"McCovey Cove sits just beyond right field, where kayakers wait — sometimes for hours — to retrieve home run 'splash hit' balls that clear the wall and land straight in the bay.",
+tips:"Bring layers no matter the forecast — this is notoriously one of the chilliest, windiest parks in the league.",
+factoid:"Only 24 splash-hit home runs landed directly in McCovey Cove during Barry Bonds' record-chase seasons, and kayakers are still out there chasing every one that follows.",
+didYouKnow:"Barry Bonds hit his record-breaking 756th home run right here in 2007, passing Hank Aaron for the all-time lead. History, live, with a very good view of the bay.",
+greats:[["Willie Mays","OF, 1951–1952, 1954–1972","Widely considered the most complete player in baseball history"],["Willie McCovey","1B, 1959–1980","Feared power hitter for whom McCovey Cove is named"],["Barry Bonds","OF, 1993–2007","MLB's all-time home run leader"],["Juan Marichal","P, 1960–1973","'The Dominican Dandy,' famous for his sky-high leg kick"],["Buster Posey","C, 2009–2021","Anchored three championship teams"]],
+schedule:[["Aug 7–9","Tigers"],["Aug 10–12","Astros"],["Aug 14–16","Rockies"],["Aug 24–26","Reds"],["Aug 27–29","Diamondbacks"],["Sep 7–9","Cardinals"],["Sep 11–13","Padres"],["Sep 21–23","Twins"],["Sep 25–27","Dodgers"]]}
+];
+
+const leagues = ["AL East","AL Central","AL West","NL East","NL Central","NL West"];
+
+let activeFilter = "All";
+let searchQuery = "";
+
+/* ---------- Visit status (Been There / Want to Go) ---------- */
+// Lives entirely in this browser's localStorage — same mechanism the trivia
+// quiz already uses for its best-score, no account/backend needed. Keyed by
+// park id; value is "been", "want", or absent (unmarked). Kept as a plain
+// in-memory object, synced to localStorage on every change.
+let visitStatus = {};
+(function loadVisitStatus(){
+  try{ visitStatus = JSON.parse(localStorage.getItem("ballparkVisitStatus") || "{}"); }
+  catch(e){ visitStatus = {}; }
+})();
+
+function saveVisitStatus(){
+  try{ localStorage.setItem("ballparkVisitStatus", JSON.stringify(visitStatus)); }
+  catch(e){ /* localStorage unavailable, skip saving */ }
+}
+function getVisitStatus(parkId){ return visitStatus[parkId] || null; }
+function visitedCount(){ return Object.values(visitStatus).filter(v => v === "been").length; }
+
+// Cycles a park through unmarked -> Been There -> Want to Go -> unmarked.
+// Returns the new status so callers can react (e.g. trigger the 30/30
+// celebration) without re-reading from storage.
+function cycleVisitStatus(parkId){
+  const cur = getVisitStatus(parkId);
+  const next = cur === null ? "been" : cur === "been" ? "want" : null;
+  if(next) visitStatus[parkId] = next; else delete visitStatus[parkId];
+  saveVisitStatus();
+  return next;
+}
+
+// Explicit set (used by the two named buttons on the detail page) — clicking
+// an already-active button unmarks it instead of doing nothing.
+function setVisitStatus(parkId, status){
+  const next = getVisitStatus(parkId) === status ? null : status;
+  if(next) visitStatus[parkId] = next; else delete visitStatus[parkId];
+  saveVisitStatus();
+  return next;
+}
+
+function updateVisitedStat(){
+  const el = document.getElementById("visitedStatNum");
+  if(el) el.textContent = visitedCount();
+}
+
+function imgUrl(filename){
+  return "https://commons.wikimedia.org/wiki/Special:FilePath/" + filename;
+}
+
+/* ================= Road Trip Planner ================= */
+
+// Real Amtrak-served city pairs (not same-metro) with realistic typical trip hours.
+// Everywhere else, the planner falls back to estimated driving time.
+const TRAIN_CORRIDORS = [
+  ["fenway-park","yankee-stadium",4.0],
+  ["fenway-park","citi-field",4.2],
+  ["fenway-park","citizens-bank-park",5.5],
+  ["fenway-park","camden-yards",7.0],
+  ["fenway-park","nationals-park",7.5],
+  ["yankee-stadium","citizens-bank-park",1.5],
+  ["yankee-stadium","camden-yards",2.8],
+  ["yankee-stadium","nationals-park",3.3],
+  ["citi-field","citizens-bank-park",1.6],
+  ["citi-field","camden-yards",2.9],
+  ["citi-field","nationals-park",3.4],
+  ["citizens-bank-park","camden-yards",1.2],
+  ["citizens-bank-park","nationals-park",1.8],
+  ["camden-yards","nationals-park",0.7],
+  ["wrigley-field","american-family-field",1.5],
+  ["rate-field","american-family-field",1.7],
+  ["dodger-stadium","petco-park",2.75],
+  ["angel-stadium","petco-park",2.9],
+  ["oracle-park","sutter-health-park",2.0]
+];
+
+// Parks close enough to be the same metro area — local transit, not a real travel day.
+const SAME_METRO = [
+  ["yankee-stadium","citi-field",0.5,"Same city — hop the subway (4/7 trains) between Yankee Stadium and Citi Field, no full travel day needed."],
+  ["wrigley-field","rate-field",0.6,"Same city — hop the CTA Red Line between Wrigley Field and Rate Field, no full travel day needed."]
+];
+
+const TRIP_MONTHS = {Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};
+const TRIP_YEAR = 2026;
+// Cap any single leg (car or train) at a sane length — nobody wants an 11-hour
+// marathon drive squeezed into a baseball vacation. Longest real train corridor
+// in our data tops out at 7.5h, so 8h keeps every legitimate corridor while
+// ruling out unreasonable long-haul car legs.
+const MAX_LEG_HOURS = 8;
+
+// How "best" gets scored, per user-selected priority. newPark/repeat reward
+// games attended (a repeat visit to an already-hit park counts for less than
+// a brand-new park); travelHour penalizes total hours spent in transit;
+// gapDay is a small tie-breaker toward a tighter overall timeline (mostly
+// irrelevant except when two itineraries otherwise score the same).
+const TRIP_PRIORITIES = {
+  parks:    { label:"Most parks — pack in as many games as possible", newPark:150, repeat:20, travelHour:4,  gapDay:0.3 },
+  balanced: { label:"Balanced — a good mix of parks and pace",        newPark:100, repeat:20, travelHour:7,  gapDay:1.5 },
+  relaxed:  { label:"Relaxed pace — minimize time on the road",       newPark:60,  repeat:15, travelHour:16, gapDay:0   }
+};
+
+// Safety valve for the trip search below: this explores every feasible
+// combination of home windows (not just one greedy path), which is fast in
+// practice because MAX_LEG_HOURS keeps the branching factor small, but a cap
+// keeps a pathological input from ever hanging the tab — it just returns the
+// best itinerary found before hitting the cap instead of the true optimum.
+const SEARCH_NODE_BUDGET = 60000;
+
+function parseDateRange(str){
+  let m = str.match(/^([A-Za-z]{3}) (\d{1,2})\s*[–-]\s*([A-Za-z]{3}) (\d{1,2})$/);
+  if(m) return {start:new Date(TRIP_YEAR,TRIP_MONTHS[m[1]],+m[2]), end:new Date(TRIP_YEAR,TRIP_MONTHS[m[3]],+m[4])};
+  m = str.match(/^([A-Za-z]{3}) (\d{1,2})\s*[–-]\s*(\d{1,2})$/);
+  if(m) return {start:new Date(TRIP_YEAR,TRIP_MONTHS[m[1]],+m[2]), end:new Date(TRIP_YEAR,TRIP_MONTHS[m[1]],+m[3])};
+  m = str.match(/^([A-Za-z]{3}) (\d{1,2})$/);
+  if(m){ const d = new Date(TRIP_YEAR,TRIP_MONTHS[m[1]],+m[2]); return {start:d,end:d}; }
+  return null;
+}
+
+function daysBetween(d1,d2){ return Math.round((d2-d1)/86400000); }
+function addDays(d,n){ const r = new Date(d); r.setDate(r.getDate()+n); return r; }
+
+// Schedule data is static for the app's lifetime, but the trip search below
+// calls getWindows/getLeg thousands of times while exploring branches — cache
+// both so the (fairly expensive) regex date-parsing and haversine math only
+// ever run once per park / once per park-pair, not once per search node.
+const _windowsCache = new Map();
+function getWindows(park){
+  if(_windowsCache.has(park.id)) return _windowsCache.get(park.id);
+  const windows = park.schedule.map(s => {
+    const r = parseDateRange(s[0]);
+    return r ? {start:r.start,end:r.end,opponent:s[1],label:s[0]} : null;
+  }).filter(Boolean);
+  _windowsCache.set(park.id, windows);
+  return windows;
+}
+
+function haversineMiles(lat1,lon1,lat2,lon2){
+  const R = 3958.8;
+  const toRad = d => d*Math.PI/180;
+  const dLat = toRad(lat2-lat1), dLon = toRad(lon2-lon1);
+  const a = Math.sin(dLat/2)**2 + Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*Math.sin(dLon/2)**2;
+  return R * 2*Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+}
+
+function drivingHours(miles){
+  const speed = miles < 50 ? 32 : miles < 300 ? 55 : 62;
+  return (miles*1.2)/speed;
+}
+
+const _legCache = new Map();
+function getLeg(fromId, toId, vehiclePref){
+  if(fromId === toId) return null;
+  const cacheKey = fromId+"|"+toId+"|"+vehiclePref;
+  if(_legCache.has(cacheKey)) return _legCache.get(cacheKey);
+  const leg = computeLeg(fromId, toId, vehiclePref);
+  _legCache.set(cacheKey, leg);
+  return leg;
+}
+function computeLeg(fromId, toId, vehiclePref){
+  const metro = SAME_METRO.find(m => (m[0]===fromId&&m[1]===toId)||(m[0]===toId&&m[1]===fromId));
+  if(metro) return {mode:"transit", hours:metro[2], note:metro[3]};
+  if(vehiclePref !== "car"){
+    const tc = TRAIN_CORRIDORS.find(t => (t[0]===fromId&&t[1]===toId)||(t[0]===toId&&t[1]===fromId));
+    if(tc) return {mode:"train", hours:tc[2]};
+  }
+  const pa = parks.find(p=>p.id===fromId), pb = parks.find(p=>p.id===toId);
+  const miles = haversineMiles(pa.lat,pa.lon,pb.lat,pb.lon);
+  return {mode:"car", hours:drivingHours(miles), miles};
+}
+
+// Scores a complete (or partial-but-stoppable) itinerary under a given
+// priority's weights. Distinct parks count more than repeat visits to a park
+// already on the trip; total travel hours are a straight penalty; total gap
+// days is a small tie-breaker (see TRIP_PRIORITIES comment above).
+function scoreStops(stops, totalTravelHours, weights){
+  const distinctParks = new Set(stops.map(s=>s.parkId)).size;
+  const repeats = stops.length - distinctParks;
+  let totalGapDays = 0;
+  for(let i=1;i<stops.length;i++) totalGapDays += daysBetween(stops[i-1].date, stops[i].date);
+  return distinctParks*weights.newPark + repeats*weights.repeat
+       - totalTravelHours*weights.travelHour - totalGapDays*weights.gapDay;
+}
+
+// Full search over every feasible combination of reachable home windows,
+// starting from startId/w0 and never going past dateLimit. This replaces an
+// earlier version that greedily locked in the single best-looking next stop
+// at each step — which can miss a better trip a few moves later. Because
+// MAX_LEG_HOURS keeps most parks unreachable from most other parks, the
+// branching factor stays small in practice, so exploring every branch (up to
+// SEARCH_NODE_BUDGET) is fast and finds the true best itinerary for the
+// chosen priority, not just a locally-good one.
+//
+// If endId is given, only itineraries that land on endId's own home window as
+// the final stop are considered valid — checked fresh at every node in the
+// search (not just once at a fixed cutoff point), so it can bridge to the end
+// park from wherever in the trip that actually works out best.
+// Everything below is indexed by plain integers (park index, window index)
+// rather than string keys — with tens of thousands of search nodes each
+// checking every candidate window, string concatenation + Set<string>/Map
+// hashing for "have I used this window" and "what's the leg between these
+// two parks" was the actual bottleneck, not the branching itself. A
+// precomputed leg-hours matrix and integer-indexed "used" flags turn both of
+// those into O(1) array lookups.
+function buildTripSearchIndex(vehiclePref){
+  const n = parks.length;
+  const legMatrix = new Array(n);
+  for(let i=0;i<n;i++){
+    legMatrix[i] = new Array(n);
+    for(let j=0;j<n;j++) legMatrix[i][j] = i===j ? null : getLeg(parks[i].id, parks[j].id, vehiclePref);
+  }
+  const allWindows = [];
+  parks.forEach((p, pIdx) => getWindows(p).forEach(w => allWindows.push({parkId:p.id, parkIdx:pIdx, window:w})));
+  return {legMatrix, allWindows};
+}
+
+// Full search over every feasible combination of reachable home windows,
+// starting from startId/w0 and never going past dateLimit. This replaces an
+// earlier version that greedily locked in the single best-looking next stop
+// at each step — which can miss a better trip a few moves later. Because
+// MAX_LEG_HOURS keeps most parks unreachable from most other parks, the
+// branching factor stays small in practice, so exploring every branch (up to
+// SEARCH_NODE_BUDGET) finds the true best itinerary for the chosen priority,
+// not just a locally-good one.
+//
+// If endId is given, only itineraries that land on endId's own home window as
+// the final stop are considered valid — checked fresh at every node in the
+// search (not just once at a fixed cutoff point), so it can bridge to the end
+// park from wherever in the trip that actually works out best.
+function searchTrip(startId, startIdx, w0, dateLimit, weights, endIdx, index){
+  const {legMatrix, allWindows} = index;
+  const n = allWindows.length;
+  const used = new Uint8Array(n);
+  const startWinIdx = allWindows.findIndex(e => e.parkIdx===startIdx && e.window.label===w0.label);
+  if(startWinIdx >= 0) used[startWinIdx] = 1;
+
+  const stops = [{parkId:startId, opponent:w0.opponent, dateLabel:w0.label, date:w0.start, travel:null}];
+  let nodesVisited = 0, best = null, bestScore = -Infinity;
+
+  function consider(totalTravelHours){
+    const score = scoreStops(stops, totalTravelHours, weights);
+    if(score > bestScore){ bestScore = score; best = {stops: stops.slice(), totalTravelHours}; }
+  }
+
+  // Classic backtracking: mutate stops/used in place, recurse, then undo —
+  // avoids cloning a Set/array at every one of potentially tens of thousands
+  // of nodes.
+  function recurse(currentParkIdx, currentParkId, currentDate, totalTravelHours){
+    nodesVisited++;
+    if(endIdx===null || currentParkIdx===endIdx) consider(totalTravelHours);
+    if(nodesVisited > SEARCH_NODE_BUDGET) return;
+
+    for(let i=0; i<n; i++){
+      if(nodesVisited > SEARCH_NODE_BUDGET) return;
+      if(used[i]) continue;
+      const e = allWindows[i], w = e.window;
+      if(w.start <= currentDate) continue;
+      if(w.start > dateLimit) continue;
+      const leg = legMatrix[currentParkIdx][e.parkIdx];
+      const travelHours = leg ? leg.hours : 0;
+      if(leg && travelHours > MAX_LEG_HOURS) continue;
+      const gapDays = daysBetween(currentDate, w.start);
+      if(leg && travelHours > gapDays*24) continue;
+
+      used[i] = 1;
+      stops.push({parkId:e.parkId, opponent:w.opponent, dateLabel:w.label, date:w.start, travel: leg ? {...leg, fromParkId:currentParkId} : null});
+      recurse(e.parkIdx, e.parkId, w.start, totalTravelHours + travelHours);
+      stops.pop();
+      used[i] = 0;
+    }
+  }
+
+  recurse(startIdx, startId, w0.start, 0);
+  return best;
+}
+
+function planTrip(startId, endId, days, vehiclePref, priority){
+  const weights = TRIP_PRIORITIES[priority] || TRIP_PRIORITIES.balanced;
+  const startPark = parks.find(p=>p.id===startId);
+  const startWindows = getWindows(startPark);
+  const startIdx = parks.findIndex(p=>p.id===startId);
+  const endIdx = endId ? parks.findIndex(p=>p.id===endId) : null;
+  const index = buildTripSearchIndex(vehiclePref); // built once, shared across every start window below
+  let best = null, bestScore = -Infinity;
+
+  startWindows.forEach(w0 => {
+    const tripLimit = addDays(w0.start, days-1);
+    const result = searchTrip(startId, startIdx, w0, tripLimit, weights, endIdx, index);
+    if(!result) return;
+    const score = scoreStops(result.stops, result.totalTravelHours, weights);
+    if(score > bestScore){ bestScore = score; best = result; }
+  });
+
+  if(!best) return null;
+  const distinctParks = new Set(best.stops.map(s=>s.parkId)).size;
+  const endedCorrectly = endId ? best.stops[best.stops.length-1].parkId === endId : true;
+  return {stops: best.stops, distinctParks, totalTravelHours: best.totalTravelHours, endedCorrectly};
+}
+
+function populateTripSelects(){
+  const startSel = document.getElementById("tripStart");
+  const endSel = document.getElementById("tripEnd");
+  const opts = parks.map(p => `<option value="${p.id}">${p.team} — ${p.name}</option>`).join("");
+  startSel.innerHTML = opts;
+  endSel.innerHTML = `<option value="">No preference — optimize for me</option>` + opts;
+  startSel.value = parks[0].id;
+}
+
+function renderTripResults(result, inputs){
+  const el = document.getElementById("tripResults");
+  if(!result){
+    el.innerHTML = `<div class="trip-empty">I couldn't line up a feasible itinerary with those settings. Home schedules are sparse for some teams over any given stretch, so try a longer trip, a different end park, or leave the end point open for me to optimize.</div>`;
+    return;
+  }
+  const games = result.stops.length;
+  const parksHit = result.distinctParks;
+  const endParkObj = inputs.endId ? parks.find(p => p.id === inputs.endId) : null;
+  const summaryNote = inputs.endId
+    ? (result.endedCorrectly
+        ? `Built to land you in ${endParkObj.city} by the end, catching as many real home games along the way as the schedule allows.`
+        : `Couldn't quite land this one at ${endParkObj.name} within ${inputs.days} days — here's the best real itinerary I could build instead. Try adding a day or two.`)
+    : `Optimized to hit as many different ballparks and real home games as possible in ${inputs.days} days.`;
+
+  let html = `<div class="trip-summary">
+    <h3>${games} game${games===1?"":"s"} across ${parksHit} ballpark${parksHit===1?"":"s"}</h3>
+    <p>${summaryNote}</p>
+  </div><div class="trip-timeline">`;
+
+  result.stops.forEach((s, i) => {
+    const p = parks.find(pk => pk.id === s.parkId);
+    if(s.travel){
+      const t = s.travel;
+      const fromPark = parks.find(pk => pk.id === t.fromParkId);
+      let link = "";
+      if(t.mode === "car"){
+        link = `<a href="https://www.google.com/maps/dir/?api=1&origin=${fromPark.lat},${fromPark.lon}&destination=${p.lat},${p.lon}&travelmode=driving" target="_blank" rel="noopener">Get directions</a>`;
+      } else if(t.mode === "train"){
+        link = `<a href="https://www.google.com/search?q=Amtrak%20train%20${encodeURIComponent(fromPark.city)}%20to%20${encodeURIComponent(p.city)}" target="_blank" rel="noopener">Check Amtrak</a>`;
+      }
+      const icon = t.mode === "car" ? "&#128663;" : t.mode === "train" ? "&#128646;" : "&#128649;";
+      const modeLabel = t.mode === "transit" ? "Local transit" : t.mode === "train" ? "Train" : "Drive";
+      const hoursLabel = t.hours < 1 ? Math.round(t.hours*60)+" min" : t.hours.toFixed(1)+" hrs";
+      html += `<div class="trip-leg"><span class="tl-icon">${icon}</span> ${modeLabel} &middot; ~${hoursLabel}${t.note ? " — "+t.note : ""} ${link}</div>`;
+    }
+    html += `<div class="trip-stop">
+      <img class="ts-img" src="${imgUrl(p.image)}" alt="${p.name}" onerror="this.style.display='none';">
+      <div>
+        <div class="ts-day">Day ${i+1} &middot; ${s.dateLabel}</div>
+        <div class="ts-name">${p.team}</div>
+        <div class="ts-meta">${p.name} &middot; vs ${s.opponent}</div>
+      </div>
+    </div>`;
+  });
+  html += `</div>`;
+  el.innerHTML = html;
+}
+
+async function renderMap(){
+  const svg = document.getElementById("mapSvg");
+  const fallback = document.getElementById("mapFallback");
+  const W = 960, H = 600;
+  const svgNS = "http://www.w3.org/2000/svg";
+
+  try{
+    if(typeof d3 === "undefined" || typeof topojson === "undefined"){
+      throw new Error("map libraries did not load");
+    }
+    const res = await fetch("https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json");
+    if(!res.ok) throw new Error("states data fetch failed");
+    const topology = await res.json();
+    const statesGeo = topojson.feature(topology, topology.objects.states);
+
+    // Albers USA projection: the standard, accurate US map projection —
+    // real state shapes, real coastlines, and it'll place any lat/lon
+    // (including future road-trip routes) correctly and consistently.
+    const projection = d3.geoAlbersUsa().scale(1250).translate([W / 2, H / 2]);
+    const path = d3.geoPath(projection);
+
+    statesGeo.features.forEach(f => {
+      const d = path(f);
+      if(!d) return;
+      const el = document.createElementNS(svgNS, "path");
+      el.setAttribute("d", d);
+      el.setAttribute("class", "state");
+      svg.appendChild(el);
+    });
+
+    parks.forEach(p => {
+      const coords = projection([p.lon, p.lat]);
+      if(!coords) return;
+      const [x, y] = coords;
+      const dot = document.createElementNS(svgNS, "circle");
+      dot.setAttribute("cx", x);
+      dot.setAttribute("cy", y);
+      dot.setAttribute("r", 5);
+      dot.setAttribute("class", "map-dot");
+      dot.setAttribute("aria-label", p.name);
+      dot.addEventListener("mouseenter", () => showMapCard(p, dot));
+      dot.addEventListener("mouseleave", () => hideMapCard(dot));
+      dot.addEventListener("click", () => showDetail(p.id));
+      svg.appendChild(dot);
+    });
+  } catch(err){
+    fallback.style.display = "block";
+  }
+}
+
+function showMapCard(p, dotEl){
+  document.querySelectorAll(".map-dot").forEach(d => { d.setAttribute("r", 5); d.classList.remove("active"); });
+  dotEl.setAttribute("r", 9.5);
+  dotEl.classList.add("active");
+  const card = document.getElementById("mapCard");
+  card.innerHTML = `
+    <img class="mc-img" src="${imgUrl(p.image)}" alt="" onerror="this.style.display='none';">
+    <div class="mc-team">${p.team}</div>
+    <div class="mc-park">${p.name}</div>
+    <div class="mc-city">${p.city}</div>`;
+  const wrap = document.getElementById("mapWrap");
+  const wrapRect = wrap.getBoundingClientRect();
+  const dotRect = dotEl.getBoundingClientRect();
+  const relX = dotRect.left + dotRect.width / 2 - wrapRect.left;
+  const relY = dotRect.top - wrapRect.top;
+  const leftPct = (relX / wrapRect.width) * 100;
+  const topPct = (relY / wrapRect.height) * 100;
+  let transform = "translate(-50%, -115%)";
+  if(leftPct > 72) transform = "translate(-95%, -115%)";
+  else if(leftPct < 12) transform = "translate(-5%, -115%)";
+  if(topPct < 16) transform = transform.replace("-115%", "20%");
+  card.style.left = relX + "px";
+  card.style.top = relY + "px";
+  card.style.transform = transform;
+  card.classList.add("visible");
+}
+
+function hideMapCard(dotEl){
+  dotEl.setAttribute("r", 5);
+  dotEl.classList.remove("active");
+  document.getElementById("mapCard").classList.remove("visible");
+}
+
+const VISIT_FILTERS = ["Been There", "Want to Go"];
+
+function renderFilters(){
+  const bar = document.getElementById("filterBar");
+  const chips = ["All", ...leagues];
+  bar.innerHTML = "";
+  chips.forEach(c => {
+    const btn = document.createElement("button");
+    btn.className = "filter-chip" + (c === activeFilter ? " active" : "");
+    btn.textContent = c;
+    btn.addEventListener("click", () => { activeFilter = c; renderFilters(); renderGrid(); });
+    bar.appendChild(btn);
+  });
+  const divider = document.createElement("span");
+  divider.className = "filter-chip-divider";
+  divider.setAttribute("aria-hidden", "true");
+  bar.appendChild(divider);
+  VISIT_FILTERS.forEach(c => {
+    const btn = document.createElement("button");
+    btn.className = "filter-chip filter-chip-visit" + (c === activeFilter ? " active" : "");
+    btn.textContent = c === "Been There" ? "✓ Been There" : "★ Want to Go";
+    btn.addEventListener("click", () => { activeFilter = c; renderFilters(); renderGrid(); });
+    bar.appendChild(btn);
+  });
+}
+
+function matches(p){
+  const q = searchQuery.trim().toLowerCase();
+  let statusOk = true;
+  if(activeFilter === "Been There") statusOk = getVisitStatus(p.id) === "been";
+  else if(activeFilter === "Want to Go") statusOk = getVisitStatus(p.id) === "want";
+  else statusOk = activeFilter === "All" || p.league === activeFilter;
+  if(!statusOk) return false;
+  if(!q) return true;
+  return (p.name+" "+p.team+" "+p.city).toLowerCase().includes(q);
+}
+
+// Shared badge markup for the visit-status corner checkmark — used on both
+// the grid cards and the detail-page hero image so the interaction stays
+// visually consistent everywhere it appears.
+function visitBadgeMarkup(parkId){
+  const status = getVisitStatus(parkId);
+  const cls = status === "been" ? "is-been" : status === "want" ? "is-want" : "is-unmarked";
+  const icon = status === "been" ? "&#10003;" : status === "want" ? "&#9733;" : "";
+  const title = status === "been" ? "Been there! Click to change." : status === "want" ? "Want to go — click to change." : "Mark as Been There or Want to Go";
+  return `<button type="button" class="visit-badge ${cls}" data-id="${parkId}" title="${title}" aria-label="${title}">${icon}</button>`;
+}
+
+function wireVisitBadges(root){
+  root.querySelectorAll(".visit-badge").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const id = btn.dataset.id;
+      const next = cycleVisitStatus(id);
+      btn.className = "visit-badge " + (next === "been" ? "is-been" : next === "want" ? "is-want" : "is-unmarked");
+      btn.innerHTML = next === "been" ? "&#10003;" : next === "want" ? "&#9733;" : "";
+      btn.title = btn.ariaLabel = next === "been" ? "Been there! Click to change." : next === "want" ? "Want to go — click to change." : "Mark as Been There or Want to Go";
+      btn.classList.add("pop");
+      setTimeout(() => btn.classList.remove("pop"), 450);
+      updateVisitedStat();
+      if(activeFilter === "Been There" || activeFilter === "Want to Go") renderGrid();
+      if(next === "been" && visitedCount() === parks.length && typeof window.launchHomer === "function"){
+        setTimeout(() => window.launchHomer("YOU'VE DONE IT! \u{1F3C6}<small>All 30 ballparks, checked off. Certified baseball road warrior.</small>"), 200);
+      }
+    });
+  });
+}
+
+function renderGrid(){
+  const grid = document.getElementById("parkGrid");
+  const filtered = parks.filter(matches);
+  document.getElementById("resultsCount").textContent = filtered.length + (filtered.length===1 ? " ballpark" : " ballparks");
+  const noResultsEl = document.getElementById("noResults");
+  noResultsEl.style.display = filtered.length ? "none" : "block";
+  if(!filtered.length){
+    noResultsEl.textContent = activeFilter === "Been There"
+      ? "No ballparks marked Been There yet. Click the badge on any card to check one off."
+      : activeFilter === "Want to Go"
+        ? "No ballparks marked Want to Go yet. Click the badge on any card to add one."
+        : "No ballparks match that search. Try another team or city.";
+  }
+  grid.innerHTML = "";
+  filtered.forEach(p => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <div class="thumb-wrap">
+        <img src="${imgUrl(p.image)}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="thumb-fallback" style="display:none;">${p.name}</div>
+        ${visitBadgeMarkup(p.id)}
+      </div>
+      <div class="card-body">
+        <p class="park-name">${p.name}</p>
+        <p class="team-name">${p.team}</p>
+        <p class="meta">${p.city} &middot; Opened ${p.opened}</p>
+      </div>`;
+    card.addEventListener("click", () => showDetail(p.id));
+    grid.appendChild(card);
+  });
+  wireVisitBadges(grid);
+}
+
+function renderDetail(p){
+  const el = document.getElementById("detailContent");
+  const vaultCards = p.greats.map(g => `
+    <div class="vault-card">
+      <div class="v-name">${g[0]}</div>
+      <div class="v-role">${g[1]}</div>
+      <div class="v-note">${g[2]}</div>
+    </div>`).join("");
+  const scheduleRows = p.schedule.map(s => `
+    <li><span class="schedule-range">${s[0]}</span><span class="schedule-opp">${s[1]}</span></li>`).join("");
+  el.innerHTML = `
+    <div class="detail-hero">
+      <img src="${imgUrl(p.image)}" alt="${p.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <div class="fallback" style="display:none;">${p.name}</div>
+      ${visitBadgeMarkup(p.id)}
+    </div>
+    <div class="detail-head">
+      <div class="eyebrow">${p.league}</div>
+      <h2>${p.name}</h2>
+      <div class="team">${p.team} &middot; ${p.city}</div>
+      <div class="tagline">${p.tagline}</div>
+    </div>
+    <div class="factbar">
+      <div class="fact-pill"><div class="fp-label">Opened</div><div class="fp-value">${p.opened}</div></div>
+      <div class="fact-pill"><div class="fp-label">Capacity</div><div class="fp-value">${p.capacity}</div></div>
+      <div class="fact-pill"><div class="fp-label">Roof</div><div class="fp-value">${p.roof}</div></div>
+    </div>
+    <div class="mag-grid">
+      <div class="mag-block"><h3><span class="ic">&#127789;</span>Food and drink</h3><p>${p.food}</p></div>
+      <div class="mag-block"><h3><span class="ic">&#128301;</span>Watching the game</h3><p>${p.watching}</p></div>
+
+      <div class="pullquote">
+        <div class="pq-label">&#9889; X-factor</div>
+        <p>${p.xfactor}</p>
+      </div>
+
+      <div class="mag-block"><h3><span class="ic">&#129517;</span>Know before you go</h3><p>${p.knowBeforeYouGo}</p></div>
+      <div class="mag-block"><h3><span class="ic">&#128663;</span>Attending tips</h3><p>${p.tips}</p></div>
+
+      <div class="mag-full" style="padding-top:8px;">
+        <h3 style="font-size:13px;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin:12px 0 4px;">&#127942; From the vault</h3>
+      </div>
+      <div class="vault-grid">${vaultCards}</div>
+
+      <div class="twin-row">
+        <div class="callout callout-blue"><h3>&#129300; Did you know</h3><p>${p.didYouKnow}</p></div>
+        <div class="callout callout-gold"><h3>&#127881; Fun factoid</h3><p>${p.factoid}</p></div>
+      </div>
+
+      <div class="mag-full" style="padding:20px 0 0;">
+        <h3 style="font-size:13px;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin:0 0 4px;">&#128197; Remaining 2026 home schedule</h3>
+        <p class="schedule-note">As of July 30, 2026. Dates and matchups can shift for makeups or scheduling changes — confirm before you book.</p>
+        <ul class="schedule-list">${scheduleRows}</ul>
+      </div>
+    </div>`;
+  wireVisitBadges(el);
+}
+
+function setNavActive(view){
+  document.querySelectorAll("#navlinks button").forEach(b => {
+    b.classList.toggle("active", b.dataset.view === view);
+  });
+}
+
+function showView(view){
+  document.getElementById("view-home").style.display = view === "home" ? "block" : "none";
+  document.getElementById("view-parks").style.display = view === "home" || view === "parks" ? "block" : "none";
+  document.getElementById("view-about").style.display = view === "about" ? "block" : "none";
+  document.getElementById("view-detail").style.display = view === "detail" ? "block" : "none";
+  document.getElementById("view-trivia").style.display = view === "trivia" ? "block" : "none";
+  document.getElementById("view-compare").style.display = view === "compare" ? "block" : "none";
+  document.getElementById("view-tripplanner").style.display = view === "tripplanner" ? "block" : "none";
+  document.getElementById("view-rankings").style.display = view === "rankings" ? "block" : "none";
+  setNavActive(view === "detail" ? "parks" : view);
+  window.scrollTo({top:0,behavior:"instant"});
+}
+
+/* ---------- Trivia ---------- */
+let triviaQuestions = [];
+let triviaIndex = 0;
+let triviaScore = 0;
+let triviaAnswered = false;
+
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i = a.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function buildTriviaPool(){
+  const pool = [];
+  parks.forEach(p => {
+    pool.push({team: p.team, text: p.didYouKnow});
+    pool.push({team: p.team, text: p.factoid});
+  });
+  return pool;
+}
+
+function startTrivia(){
+  triviaQuestions = shuffle(buildTriviaPool()).slice(0, 10);
+  triviaIndex = 0;
+  triviaScore = 0;
+  document.getElementById("triviaIntro").style.display = "none";
+  document.getElementById("triviaResults").style.display = "none";
+  document.getElementById("triviaQuiz").style.display = "block";
+  renderTriviaQuestion();
+}
+
+function renderTriviaQuestion(){
+  triviaAnswered = false;
+  const q = triviaQuestions[triviaIndex];
+  document.getElementById("triviaProgress").textContent = `Question ${triviaIndex + 1} of ${triviaQuestions.length} · Score: ${triviaScore}`;
+  document.getElementById("triviaQuestionText").textContent = `Which team's ballpark does this fact belong to? "${q.text}"`;
+  const otherTeams = shuffle(parks.map(p => p.team).filter(t => t !== q.team)).slice(0, 3);
+  const options = shuffle([q.team, ...otherTeams]);
+  const wrap = document.getElementById("triviaOptions");
+  wrap.innerHTML = "";
+  options.forEach(opt => {
+    const btn = document.createElement("button");
+    btn.className = "trivia-option";
+    btn.textContent = opt;
+    btn.addEventListener("click", () => selectTriviaAnswer(opt, q.team, btn));
+    wrap.appendChild(btn);
+  });
+  document.getElementById("triviaNextBtn").style.display = "none";
+}
+
+function selectTriviaAnswer(selected, correct, btnEl){
+  if(triviaAnswered) return;
+  triviaAnswered = true;
+  if(selected === correct) triviaScore++;
+  document.querySelectorAll(".trivia-option").forEach(b => {
+    b.disabled = true;
+    if(b.textContent === correct) b.classList.add("correct");
+    else if(b === btnEl) b.classList.add("incorrect");
+  });
+  document.getElementById("triviaProgress").textContent = `Question ${triviaIndex + 1} of ${triviaQuestions.length} · Score: ${triviaScore}`;
+  document.getElementById("triviaNextBtn").style.display = "inline-flex";
+}
+
+function nextTriviaQuestion(){
+  triviaIndex++;
+  if(triviaIndex >= triviaQuestions.length) finishTrivia();
+  else renderTriviaQuestion();
+}
+
+function finishTrivia(){
+  document.getElementById("triviaQuiz").style.display = "none";
+  document.getElementById("triviaResults").style.display = "block";
+  const total = triviaQuestions.length;
+  let headline;
+  if(triviaScore >= 9) headline = "Certified Ballpark Historian \u{1F3C6}";
+  else if(triviaScore >= 6) headline = "Solid Road Warrior ⚾";
+  else if(triviaScore >= 3) headline = "Rookie Season \u{1F331}";
+  else headline = "Time to hit a few more games \u{1F60A}";
+  document.getElementById("triviaScoreHeadline").textContent = headline;
+  document.getElementById("triviaScoreDetail").textContent = `You scored ${triviaScore} out of ${total}.`;
+  try{
+    const best = parseInt(localStorage.getItem("ballparkTriviaBest") || "0", 10);
+    if(triviaScore > best) localStorage.setItem("ballparkTriviaBest", String(triviaScore));
+  } catch(e){ /* localStorage unavailable, skip saving */ }
+  updateTriviaBestDisplay();
+}
+
+function updateTriviaBestDisplay(){
+  const el = document.getElementById("triviaBest");
+  if(!el) return;
+  try{
+    const best = localStorage.getItem("ballparkTriviaBest");
+    el.textContent = best ? `Best score on this device: ${best}/10` : "";
+  } catch(e){ el.textContent = ""; }
+}
+
+/* ---------- Compare ---------- */
+function populateCompareSelects(){
+  const selA = document.getElementById("compareA");
+  const selB = document.getElementById("compareB");
+  const options = parks.map(p => `<option value="${p.id}">${p.team} — ${p.name}</option>`).join("");
+  selA.innerHTML = options;
+  selB.innerHTML = options;
+  selA.value = parks[0].id;
+  selB.value = parks[1].id;
+}
+
+function renderCompareCard(p){
+  return `
+    <div class="compare-card">
+      <img class="cc-img" src="${imgUrl(p.image)}" alt="${p.name}" onerror="this.style.display='none';">
+      <div class="cc-body">
+        <div class="cc-team">${p.team}</div>
+        <div class="cc-name">${p.name}</div>
+        <div class="cc-tagline">${p.tagline}</div>
+        <div class="cc-stats">
+          <div class="cc-stat"><b>${p.opened}</b>Opened</div>
+          <div class="cc-stat"><b>${p.capacity}</b>Capacity</div>
+          <div class="cc-stat"><b>${p.roof}</b>Roof</div>
+        </div>
+        <div class="cc-row"><h4>Food &amp; drink</h4><p>${p.food}</p></div>
+        <div class="cc-row"><h4>Watching the game</h4><p>${p.watching}</p></div>
+        <div class="cc-row"><h4>X-factor</h4><p>${p.xfactor}</p></div>
+        <div class="cc-row"><h4>From the vault</h4><p>${p.greats.slice(0,2).map(g => g[0]).join(", ")}, and more</p></div>
+        <button class="btn btn-outline btn-sm compare-view-btn" data-id="${p.id}">View full page &rarr;</button>
+      </div>
+    </div>`;
+}
+
+function renderCompare(){
+  const idA = document.getElementById("compareA").value;
+  const idB = document.getElementById("compareB").value;
+  const pA = parks.find(p => p.id === idA);
+  const pB = parks.find(p => p.id === idB);
+  if(!pA || !pB) return;
+  const grid = document.getElementById("compareGrid");
+  grid.innerHTML = renderCompareCard(pA) + renderCompareCard(pB);
+  grid.querySelectorAll(".compare-view-btn").forEach(btn => {
+    btn.addEventListener("click", () => showDetail(btn.dataset.id));
+  });
+}
+
+function showDetail(id){
+  const p = parks.find(x => x.id === id);
+  if(!p) return;
+  renderDetail(p);
+  showView("detail");
+  history.pushState({id}, "", "#" + id);
+}
+
+/* ---------- Ballpark Rankings ---------- */
+// Built by averaging 5 published 2025-26 ballpark rankings (Sports Illustrated,
+// Bleacher Report '25, Bleacher Report '26, Triple Crown Travel, Stadium Journey).
+// A source only counts toward a park's average if that source actually ranked it.
+// Three of the five sources reviewed the Rays' 2025 stopgap home (Steinbrenner Field
+// in Tampa) instead of the rebuilt Tropicana Field our app covers for 2026 — those
+// three were excluded from Tropicana Field's average rather than treated as a match.
+const RANK_TIERS = [
+  {
+    name: "The Hall of Famers",
+    desc: "Every source we checked put these five in its top tier. Not much debate here.",
+    color: "#002D72", textColor: "#fff",
+    parks: [
+      {id:"oracle-park", emoji:"🛶", blurb:"Nearly a unanimous No. 1 — McCovey Cove, the Coke bottle, and one of the great views in sports."},
+      {id:"pnc-park", emoji:"🌉", blurb:"A near-unanimous top-three pick; the Roberto Clemente Bridge view might be the best backdrop in the sport."},
+      {id:"petco-park", emoji:"🛝", blurb:"Downtown, oceanfront, and stitched into the Gaslamp Quarter — rankers can't stop putting this in their top five."},
+      {id:"fenway-park", emoji:"🟩", blurb:"Age has never been a knock here — the Green Monster and 114 years of history keep it a top-five lock everywhere."},
+      {id:"camden-yards", emoji:"🏭", blurb:"The park that invented the modern retro ballpark still ranks like it — top five, every single list."}
+    ]
+  },
+  {
+    name: "The All-Stars",
+    desc: "Clear top-tier talent, just a notch below the headliners.",
+    color: "var(--accent)", textColor: "#fff",
+    parks: [
+      {id:"wrigley-field", emoji:"🌿", blurb:"Beloved enough to top one list outright, but its scores swing more than any other park — Wrigleyville magic doesn't always show up in a spreadsheet."},
+      {id:"coors-field", emoji:"⛰️", blurb:"Mountain sunsets and thin air keep this near the top of nearly every list, box score be damned."},
+      {id:"truist-park", emoji:"🏘️", blurb:"The Battery keeps pulling this park up the board — rankers love an entertainment district you never have to leave."},
+      {id:"dodger-stadium", emoji:"🔵", blurb:"Split opinion on the 1962 bones, but Chavez Ravine views and Dodger Blue nostalgia land it comfortably in the top 10."},
+      {id:"citi-field", emoji:"🍎", blurb:"Best food in the sport on more than one list, and the Ebbets Field-inspired facade doesn't hurt either."},
+      {id:"busch-stadium", emoji:"🗼", blurb:"The Gateway Arch looming over right field is a top-10 case all by itself."},
+      {id:"citizens-bank-park", emoji:"🔔", blurb:"October crowds this loud tend to move a ranking — expect this one to climb further after the 2026 All-Star Game shine."},
+      {id:"target-field", emoji:"🎯", blurb:"Minnie and Paul shaking hands after a win, a skyline backdrop, and a light-rail stop at the gate — efficient and underrated."},
+      {id:"progressive-field", emoji:"🗿", blurb:"One of the most intimate parks left in baseball, and its ongoing renovation is only helping its case."}
+    ]
+  },
+  {
+    name: "The Everyday Lineup",
+    desc: "Reliable, well-liked, nothing that quite separates them from the pack.",
+    color: "#54585A", textColor: "#fff",
+    parks: [
+      {id:"t-mobile-park", emoji:"☂️", blurb:"That umbrella roof and a view of Puget Sound make this one of the most scenic — and most pitcher-friendly — parks around."},
+      {id:"comerica-park", emoji:"🎡", blurb:"A literal Ferris wheel inside a ballpark. Rankers can't decide if that's charming or a distraction, but it's memorable either way."},
+      {id:"american-family-field", emoji:"🧀", blurb:"A $500 million renovation is underway, and the shifting roof-and-wall combo already sets it apart from every other dome."},
+      {id:"rogers-centre", emoji:"🛂", blurb:"The only park that requires a passport, and the CN Tower view through an open roof is worth the border crossing."},
+      {id:"great-american-ball-park", emoji:"🎆", blurb:"The Reds' Hall of Fame and those home-run smokestacks keep this comfortably mid-pack, river view included."},
+      {id:"kauffman-stadium", emoji:"⛲", blurb:"Those crown-shaped fountains are one of the most photographed spots in the sport — even without a downtown location to match."},
+      {id:"yankee-stadium", emoji:"👑", blurb:"History and a short porch in right field split the vote hard — some love the pinstripe pageantry, others call it corporate."},
+      {id:"angel-stadium", emoji:"🔥", blurb:"Fire-shooting rock geysers after every home run, a few miles from Disneyland — solidly middle-of-the-pack."},
+      {id:"daikin-park", emoji:"🚂", blurb:"A life-size train on tracks above left field is either the best gimmick in baseball or a bit much, depending who you ask."}
+    ]
+  },
+  {
+    name: "The Rebuilding Years",
+    desc: "Good bones, but every source agrees these need some work.",
+    color: "#E8E9EA", textColor: "#002D72",
+    parks: [
+      {id:"globe-life-field", emoji:"❄️", blurb:"Full climate control got the Rangers a championship — rankers just wish it had more personality to go with the A/C."},
+      {id:"chase-field", emoji:"🏊", blurb:"A swimming pool in the outfield is a fun trivia answer; a dark, roof-closed stadium most of the summer is the tradeoff."},
+      {id:"nationals-park", emoji:"🍒", blurb:"Solid and central near the Capitol, but more than one ranking calls it “a worse Citizens Bank Park.”"},
+      {id:"loandepot-park", emoji:"🐟", blurb:"Electric every four years for the World Baseball Classic, quiet the other 81 games — the raw ingredients are there."},
+      {id:"rate-field", emoji:"💥", blurb:"Three different sponsor names since 2003 and still searching for a defining feature — a new South Side stadium may be coming."}
+    ]
+  },
+  {
+    name: "On Assignment",
+    desc: "Both of these are in unusual, temporary-ish circumstances that most rankings don't fully account for — see the note below.",
+    special: true,
+    color: "#a10027", textColor: "#fff",
+    parks: [
+      {id:"tropicana-field", emoji:"🌀", blurb:"Back in its rebuilt dome for 2026 after Hurricane Milton tore the roof off in 2024 — but most 2025 rankings still describe the Rays' one-year detour to Tampa's Steinbrenner Field instead. Only 2 of our 5 sources actually reviewed the rebuilt Trop itself, so this rank rests on thinner data than the other 29 parks."},
+      {id:"sutter-health-park", emoji:"🎰", blurb:"A Triple-A facility standing in for a big-league stadium while the A's wait out their move to Las Vegas. Unlike Tropicana Field, this one isn't short on data — every source we found ranked it dead last or second-to-last. It's just short on, well, everything else a major-league park usually has."}
+    ]
+  }
+];
+
+function renderRankings(){
+  const methodEl = document.getElementById("rankMethodology");
+  if(methodEl){
+    methodEl.innerHTML = `<b>How we ranked them:</b> We averaged five published 2025–26 ballpark rankings — Sports Illustrated, two Bleacher Report editions, Triple Crown Travel, and Stadium Journey — counting a source only for the parks it actually ranked (no penalty for a park a source skipped). Ties broken by best individual ranking, then worst.`;
+  }
+  const wrap = document.getElementById("rankTiers");
+  if(!wrap) return;
+  let rank = 0;
+  wrap.innerHTML = RANK_TIERS.map(tier => {
+    const rows = tier.parks.map(entry => {
+      rank++;
+      const p = parks.find(x => x.id === entry.id);
+      if(!p) return "";
+      return `
+        <div class="rank-row" data-id="${p.id}">
+          <div class="rank-num" style="background:${tier.color};color:${tier.textColor};">${rank}</div>
+          <div class="rank-emoji">${entry.emoji || "⚾"}</div>
+          <div class="rank-info">
+            <div class="ri-name">${p.name}</div>
+            <div class="ri-team">${p.team}</div>
+            <p class="ri-blurb">${entry.blurb}</p>
+          </div>
+        </div>`;
+    }).join("");
+    const rangeStart = rank - tier.parks.length + 1;
+    const rangeEnd = rank;
+    return `
+      <div class="rank-tier">
+        <div class="rank-tier-head">
+          <span class="rank-tier-name">${tier.name}</span>
+          <span class="rank-tier-range" style="background:${tier.color};color:${tier.textColor};">#${rangeStart}–${rangeEnd}</span>
+          <p class="rank-tier-desc">${tier.desc}</p>
+        </div>
+        <div class="rank-list">${rows}</div>
+      </div>`;
+  }).join("");
+  wrap.querySelectorAll(".rank-row").forEach(row => {
+    row.addEventListener("click", () => showDetail(row.dataset.id));
+  });
+}
+
+document.getElementById("navlinks").addEventListener("click", (e) => {
+  const btn = e.target.closest("button");
+  if(!btn) return;
+  const view = btn.dataset.view;
+  if(view === "parks"){ activeFilter="All"; searchQuery=""; document.getElementById("searchInput").value=""; renderFilters(); renderGrid(); }
+  showView(view);
+  history.pushState({view}, "", view === "home" ? "#" : "#" + view);
+});
+
+document.getElementById("backBtn").addEventListener("click", () => {
+  showView("home");
+  history.pushState({view:"home"}, "", "#");
+});
+
+document.getElementById("searchInput").addEventListener("input", (e) => {
+  searchQuery = e.target.value;
+  showView("home");
+  renderGrid();
+});
+
+document.getElementById("heroBrowseBtn").addEventListener("click", () => {
+  activeFilter = "All"; searchQuery = ""; document.getElementById("searchInput").value = "";
+  renderFilters(); renderGrid();
+  showView("parks");
+  history.pushState({view:"parks"}, "", "#parks");
+});
+document.getElementById("heroTriviaBtn").addEventListener("click", () => {
+  showView("trivia");
+  history.pushState({view:"trivia"}, "", "#trivia");
+});
+
+document.getElementById("triviaStartBtn").addEventListener("click", startTrivia);
+document.getElementById("triviaNextBtn").addEventListener("click", nextTriviaQuestion);
+document.getElementById("triviaRetryBtn").addEventListener("click", startTrivia);
+
+document.getElementById("compareA").addEventListener("change", renderCompare);
+document.getElementById("compareB").addEventListener("change", renderCompare);
+
+document.getElementById("tripPlanBtn").addEventListener("click", () => {
+  // A max-length trip starting in a dense cluster can take the search a
+  // moment (worst case observed ~1s) — show a loading state and yield to the
+  // browser first so the tab doesn't look frozen while it thinks.
+  document.getElementById("tripResults").innerHTML = `<div class="trip-empty">Planning your trip&hellip;</div>`;
+  setTimeout(() => {
+    const startId = document.getElementById("tripStart").value;
+    const endId = document.getElementById("tripEnd").value || null;
+    const days = parseInt(document.getElementById("tripDays").value, 10);
+    const vehiclePref = document.getElementById("tripVehicle").value;
+    const priority = document.getElementById("tripPriority").value;
+    const result = planTrip(startId, endId, days, vehiclePref, priority);
+    renderTripResults(result, {endId, days});
+  }, 10);
+});
+
+const TOP_LEVEL_HASHES = ["parks", "about", "trivia", "compare", "tripplanner", "rankings"];
+
+window.addEventListener("popstate", () => {
+  const hash = location.hash.replace("#","");
+  if(!hash){ showView("home"); return; }
+  if(TOP_LEVEL_HASHES.includes(hash)){ showView(hash); return; }
+  const p = parks.find(x => x.id === hash);
+  if(p){ renderDetail(p); showView("detail"); }
+});
+
+renderMap();
+renderFilters();
+renderGrid();
+updateVisitedStat();
+populateCompareSelects();
+renderCompare();
+updateTriviaBestDisplay();
+populateTripSelects();
+renderRankings();
+
+(function initFromHash(){
+  const hash = location.hash.replace("#","");
+  if(hash && !TOP_LEVEL_HASHES.includes(hash)){
+    const p = parks.find(x => x.id === hash);
+    if(p){ renderDetail(p); showView("detail"); return; }
+  }
+  if(TOP_LEVEL_HASHES.includes(hash)){ showView(hash); return; }
+  showView("home");
+})();
+
+/* ---------- Easter egg: Konami code ---------- */
+(function(){
+  const seq = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"];
+  let pos = 0;
+  window.addEventListener("keydown", (e) => {
+    const key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+    if(key === seq[pos]){
+      pos++;
+      if(pos === seq.length){
+        pos = 0;
+        launchHomer();
+      }
+    } else {
+      pos = (key === seq[0]) ? 1 : 0;
+    }
+  });
+
+  const emojis = ["⚾","\u{1F389}","\u{1F32D}","\u{1F386}","⭐","\u{1F3C6}"];
+
+  function launchHomer(msgText){
+    const msg = document.createElement("div");
+    msg.className = "homer-msg";
+    msg.innerHTML = msgText || "IT'S OUTTA HERE! \u{1F386}<small>You found the Konami code. Somewhere, a crowd is going wild.</small>";
+    document.body.appendChild(msg);
+    setTimeout(() => msg.remove(), 2700);
+
+    for(let i=0;i<44;i++){
+      const c = document.createElement("div");
+      c.className = "confetto";
+      c.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+      c.style.left = Math.random()*100 + "vw";
+      const duration = 2.2 + Math.random()*2;
+      c.style.animationDuration = duration + "s";
+      c.style.animationDelay = (Math.random()*0.6) + "s";
+      c.style.fontSize = (16 + Math.random()*14) + "px";
+      document.body.appendChild(c);
+      setTimeout(() => c.remove(), (duration+1)*1000);
+    }
+  }
+
+  let logoClicks = 0;
+  const logo = document.getElementById("brandLogo");
+  if(logo){
+    logo.style.cursor = "pointer";
+    logo.addEventListener("click", () => {
+      logoClicks++;
+      if(logoClicks >= 7){
+        logoClicks = 0;
+        launchHomer();
+      }
+    });
+  }
+
+  // Exposed so the visit-status badges can reuse this same celebration when
+  // someone marks their 30th and final "Been There" ballpark.
+  window.launchHomer = launchHomer;
+})();
+</script>
+
+</body>
+</html>
