@@ -317,8 +317,6 @@
     .rank-row{flex-wrap:wrap;}
     .rank-info{flex-basis:calc(100% - 96px);}
     .hero h1{font-size:26px;}
-    .navlinks{gap:16px;}
-    .navsearch input{width:100px;}
     .detail-hero{height:200px;}
     .detail-head h2{font-size:22px;}
     .mag-grid{grid-template-columns:1fr;}
@@ -327,6 +325,19 @@
     .twin-row{grid-column:auto;grid-template-columns:1fr;}
     .schedule-list li{flex-direction:column;gap:2px;}
     .map-card{width:160px;}
+
+    /* Header: instead of every nav button wrapping onto its own line (which
+       made the banner tall and messy), pin brand + search to a compact top
+       row and turn the nav buttons into a single horizontally-scrollable
+       strip below. All buttons stay visible and reachable with a swipe,
+       nothing collapses behind a menu. */
+    .nav-inner{flex-wrap:wrap;row-gap:8px;padding:10px 16px;}
+    .brand{order:1;}
+    .navsearch{order:2;margin-left:auto;}
+    .navsearch input{width:96px;}
+    .navlinks{order:3;flex-basis:100%;flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:6px;padding-bottom:2px;-ms-overflow-style:none;}
+    .navlinks::-webkit-scrollbar{display:none;}
+    .navlinks button{flex:none;}
   }
 </style>
 </head>
