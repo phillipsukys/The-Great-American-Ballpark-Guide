@@ -73,6 +73,17 @@
   .navsearch input{background:transparent;border:none;outline:none;color:#fff;font-size:12.5px;padding:0;width:110px;}
   .navsearch input::placeholder{color:rgba(255,255,255,0.65);}
 
+  /* Mobile-only hamburger toggle + collapsible nav panel. On desktop
+     .nav-collapse is display:contents, so it's invisible to layout and
+     .navlinks/.navsearch sit exactly where they always did in the flex row.
+     The mobile media query below is what actually turns this into a menu. */
+  .nav-collapse{display:contents;}
+  .nav-hamburger{display:none;flex:none;width:38px;height:38px;border-radius:10px;border:none;background:rgba(255,255,255,0.14);align-items:center;justify-content:center;flex-direction:column;gap:4px;cursor:pointer;padding:0;}
+  .nav-hamburger .hb-line{display:block;width:18px;height:2px;background:#fff;border-radius:2px;transition:transform .2s ease, opacity .2s ease;}
+  .nav-hamburger.open .hb-line:nth-child(1){transform:translateY(6px) rotate(45deg);}
+  .nav-hamburger.open .hb-line:nth-child(2){opacity:0;}
+  .nav-hamburger.open .hb-line:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+
   main{max-width:1080px;margin:0 auto;padding:0 24px 70px;}
 
   /* ---------- Map ---------- */
@@ -317,8 +328,6 @@
     .rank-row{flex-wrap:wrap;}
     .rank-info{flex-basis:calc(100% - 96px);}
     .hero h1{font-size:26px;}
-    .navlinks{gap:16px;}
-    .navsearch input{width:100px;}
     .detail-hero{height:200px;}
     .detail-head h2{font-size:22px;}
     .mag-grid{grid-template-columns:1fr;}
@@ -327,6 +336,20 @@
     .twin-row{grid-column:auto;grid-template-columns:1fr;}
     .schedule-list li{flex-direction:column;gap:2px;}
     .map-card{width:160px;}
+
+    /* Header: brand + hamburger stay on one compact row; tapping the
+       hamburger drops down a full-width panel with search and all 7 nav
+       buttons stacked as tappable rows. Replaces the horizontal-scroll-strip
+       approach from the previous round per explicit request for a real
+       hamburger menu on mobile. */
+    .nav-inner{position:relative;flex-wrap:nowrap;padding:10px 16px;}
+    .nav-hamburger{display:flex;}
+    .nav-collapse{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--ink);border-bottom:4px solid var(--accent);padding:10px 16px 16px;gap:10px;box-shadow:0 12px 24px rgba(0,0,0,0.28);max-height:calc(100vh - 56px);overflow-y:auto;}
+    .nav-collapse.open{display:flex;}
+    .navlinks{flex-direction:column;align-items:stretch;flex-wrap:nowrap;gap:2px;order:unset;flex-basis:auto;}
+    .navlinks button{width:100%;text-align:left;justify-content:flex-start;padding:12px 12px;flex:none;}
+    .navsearch{width:100%;margin:2px 0 0;}
+    .navsearch input{width:100%;}
   }
 </style>
 </head>
@@ -335,18 +358,25 @@
 <header class="topnav">
   <div class="nav-inner">
     <div class="brand" id="brandLogo"><span class="brand-icon"></span><span class="brand-text"><span class="bt-line1">The Great American</span><span class="bt-line2">Ballpark Guide</span></span></div>
-    <div class="navlinks" id="navlinks">
-      <button data-view="home" class="active">Home</button>
-      <button data-view="parks">Parks</button>
-      <button data-view="trivia" class="btn btn-sm nav-white">&#127942; Trivia</button>
-      <button data-view="compare" class="btn btn-sm nav-white">&#9878;&#65039; Compare</button>
-      <button data-view="tripplanner" class="btn btn-sm nav-white">&#128663; Trip</button>
-      <button data-view="rankings" class="btn btn-sm nav-white">&#129351; Rankings</button>
-      <button data-view="about">About</button>
-    </div>
-    <div class="navsearch">
-      <span class="search-ic">&#128269;</span>
-      <input type="text" id="searchInput" placeholder="Search team, city, park">
+    <button type="button" class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false" aria-controls="navCollapse">
+      <span class="hb-line"></span>
+      <span class="hb-line"></span>
+      <span class="hb-line"></span>
+    </button>
+    <div class="nav-collapse" id="navCollapse">
+      <div class="navlinks" id="navlinks">
+        <button data-view="home" class="active">Home</button>
+        <button data-view="parks">Parks</button>
+        <button data-view="trivia" class="btn btn-sm nav-white">&#127942; Trivia</button>
+        <button data-view="compare" class="btn btn-sm nav-white">&#9878;&#65039; Compare</button>
+        <button data-view="tripplanner" class="btn btn-sm nav-white">&#128663; Trip</button>
+        <button data-view="rankings" class="btn btn-sm nav-white">&#129351; Rankings</button>
+        <button data-view="about">About</button>
+      </div>
+      <div class="navsearch">
+        <span class="search-ic">&#128269;</span>
+        <input type="text" id="searchInput" placeholder="Search team, city, park">
+      </div>
     </div>
   </div>
 </header>
@@ -1773,6 +1803,29 @@ document.getElementById("navlinks").addEventListener("click", (e) => {
   if(view === "parks"){ activeFilter="All"; searchQuery=""; document.getElementById("searchInput").value=""; renderFilters(); renderGrid(); }
   showView(view);
   history.pushState({view}, "", view === "home" ? "#" : "#" + view);
+  closeMobileNav();
+});
+
+/* Mobile hamburger menu: toggles the collapsible nav-collapse panel.
+   Desktop never triggers this (the button is display:none there). */
+function closeMobileNav(){
+  document.getElementById("navCollapse").classList.remove("open");
+  document.getElementById("navHamburger").classList.remove("open");
+  document.getElementById("navHamburger").setAttribute("aria-expanded", "false");
+}
+document.getElementById("navHamburger").addEventListener("click", (e) => {
+  e.stopPropagation();
+  const collapse = document.getElementById("navCollapse");
+  const hamburger = document.getElementById("navHamburger");
+  const isOpen = collapse.classList.toggle("open");
+  hamburger.classList.toggle("open", isOpen);
+  hamburger.setAttribute("aria-expanded", isOpen ? "true" : "false");
+});
+document.addEventListener("click", (e) => {
+  const collapse = document.getElementById("navCollapse");
+  if(!collapse.classList.contains("open")) return;
+  if(collapse.contains(e.target) || e.target.closest("#navHamburger")) return;
+  closeMobileNav();
 });
 
 document.getElementById("backBtn").addEventListener("click", () => {
